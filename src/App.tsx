@@ -1,57 +1,138 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Grid, Avatar, createMuiTheme } from '@material-ui/core';
+import { makeStyles, MuiThemeProvider, Theme } from '@material-ui/core';
+import { ExitToApp, Polymer } from '@material-ui/icons';
 
-function App() {
+import {
+  selectLoginUser,
+  selectProfiles,
+  fetchAsyncGetMyProf,
+  fetchAsyncGetProfList,
+  fetchAsyncUpdateProf
+} from './features/auth/authSlice';
+import {
+  fetchAsyncGetTasks,
+  fetchAsyncGetUsers,
+  fetchAsyncCreateCategory,
+  selectEditedTask,
+  selectTasks,
+  fetchAsyncGetCategory,
+  editTask
+} from './features/task/taskSlice';
+import styles from './App.module.css';
+
+import TaskList from './features/task/TaskList';
+import TaskDisplay from './features/task/TaskDisplay';
+import TaskForm from './features/task/TaskForm';
+import { AppDispatch } from './app/store';
+import { StylesContext } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: "#3cb371"
+    }
+  }
+});
+
+const useStyles = makeStyles((theme: Theme) => ({
+  icon: {
+    marginTop: theme.spacing(3),
+    cursor: "none",
+  },
+  avatar: {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const App: React.FC = () => {
+  const classes = useStyles();
+  const dispatch: AppDispatch = useDispatch(); 
+  const editedTask = useSelector(selectEditedTask);
+  const tasks = useSelector(selectTasks);
+  const loginUser = useSelector(selectLoginUser);
+  const profiles = useSelector(selectProfiles);
+
+  const loginProfile = profiles.filter((prof) => prof.user_profile === loginUser.id)[0];
+  const Logout = () => {
+    localStorage.removeItem("localJWT");
+    window.location.href = "/";
+  };
+  const handlerEditPicture = () => {
+    const fileInput = document.getElementById("imageInput");
+    fileInput?.click();
+  };
+
+  useEffect(() => {
+    const fetchLoader = async () => {
+      await dispatch(fetchAsyncGetTasks());
+      await dispatch(fetchAsyncGetMyProf());
+      await dispatch(fetchAsyncGetUsers());
+      await dispatch(fetchAsyncGetCategory());
+      await dispatch(fetchAsyncGetProfList());
+    };
+    fetchLoader();
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className={styles.app_root}>
+        <Grid container>
+
+          <Grid item xs={4}>
+            <Polymer className={classes.icon}/>
+          </Grid>
+
+          <Grid item xs={4}>
+            <h1>Task Board</h1>
+          </Grid>
+
+          <Grid item xs={4}>
+            <div className={styles.app_logout}>
+              <button className={styles.app_logoutIcon} onClick={Logout}>
+                <ExitToApp fontSize="large" />
+              </button>
+
+              <input
+                type="file"
+                id="imageInput"
+                hidden={true}
+                onChange={(e) => dispatch(
+                  fetchAsyncUpdateProf({
+                    id: loginProfile.id,
+                    img: e.target.files !== null ? e.target.files[0] : null,
+                  })
+                )}
+              />
+              <button className={styles.app_button} onClick={handlerEditPicture}>
+                <Avatar className={classes.avatar} alt="avatar" src={loginProfile?.img !== null ? loginProfile?.img : undefined} />
+              </button>
+
+            </div>
+          </Grid>
+
+          <Grid item xs={6}>
+            {tasks[0]?.task && <TaskList />}
+          </Grid>
+
+          <Grid item xs={6}>
+            <Grid
+              container
+              direction='column'
+              alignItems='center'
+              justifyContent='center'
+              style={{ minHeight: "80vh" }}
+            >
+              <Grid item>
+                {editedTask.status ? <TaskForm /> : <TaskDisplay />}
+              </Grid>
+            </Grid>
+          </Grid>
+          
+        </Grid>
+      </div>
+    </MuiThemeProvider>
   );
 }
 

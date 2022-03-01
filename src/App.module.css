@@ -1,0 +1,27 @@
+.app_root {
+  text-align: center;
+  background-color: white;
+  font-family: serif;
+  color: dimgrey;
+  margin: 25px;
+}
+.app_logoutIcon {
+  background-color: transparent;
+  color: dimgray;
+  margin-top: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.app_button {
+  background-color: transparent;
+  padding-top: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.app_logout {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

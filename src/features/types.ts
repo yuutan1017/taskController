@@ -1,3 +1,4 @@
+
 // authSlice.ts
 export interface LOGIN_USER {
   id: number;
@@ -39,4 +40,47 @@ export interface AUTH_STATE {
   isLoginView: boolean;
   loginUser: LOGIN_USER;
   profiles: PROFILE[];
+}
+
+// taskSlice.ts
+export interface READ_TASK {
+  id: number;
+  task: string;
+  description: string;
+  criteria: string;
+  status: string;
+  status_name: string;
+  category: number;
+  category_item: string;
+  estimate: number;
+  responsible: number;
+  responsible_username: string;
+  owner: number;
+  owner_username: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface POST_TASK {
+  id: number;
+  task: string;
+  description: string;
+  criteria: string;
+  status: string;
+  category: number;
+  estimate: number;
+  responsible: number;
+}
+
+export interface CATEGORY {
+  id: number;
+  item: string;
+}
+
+export interface TASK_STATE {
+  tasks: READ_TASK[];
+  editedTask: POST_TASK;
+  selectedTask: READ_TASK;
+  users: USER[];
+  category: CATEGORY[];
 }
