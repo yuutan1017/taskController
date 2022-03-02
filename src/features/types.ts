@@ -84,3 +84,9 @@ export interface TASK_STATE {
   users: USER[];
   category: CATEGORY[];
 }
+
+export interface SORT_STATE {
+  rows: READ_TASK[];
+  order: "desc" | "asc";
+  activeKey: string;
+}

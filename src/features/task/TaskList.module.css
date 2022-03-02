@@ -1,0 +1,17 @@
+.list_icon {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  margin-top: 10px;
+  color: dimgray; 
+}
+
+.list_hover {
+  cursor: pointer;
+}
+button :disabled{
+  color: white;
+  cursor: none;
+}
