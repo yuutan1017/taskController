@@ -26,7 +26,6 @@ import TaskList from './features/task/TaskList';
 import TaskDisplay from './features/task/TaskDisplay';
 import TaskForm from './features/task/TaskForm';
 import { AppDispatch } from './app/store';
-import { StylesContext } from '@material-ui/styles';
 
 const theme = createMuiTheme({
   palette: {

@@ -1,13 +1,67 @@
-.auth_root {
-  font-family: serif;
-  color: dimgray;
-  min-height: 80vh;
+* {
+  /* outline: 1px solid magenta; */
+}
+
+.back {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 50px;
+  text-align: center;
+  min-height: 100vh;
+  background-color: #EBECF0;
+  color: dimgray;
 }
-.auth_root span {
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  height: 600px;
+  width: 500px;
+  border-radius: 50px;
+  background: #EBECF0;
+  box-shadow: inset 10px 10px 30px #c8c9cc,
+  inset -10px -10px 30px #ffffff;
+}
+
+.button {
+  margin: 0 auto;
+  margin-top: 60px;
+  width: 200px;
+  height: 40px;
+  border: 0;
+  color: dimgray;
+  border-radius: 50px;
+  background: #EBECF0;
+  box-shadow: 5px 5px 20px #c8c9cc,
+  -5px -5px 20px #ffffff;
+  font-size: 24px;
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+.button:hover {
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
+
+.login_mg {
+  margin-top: 80px;
+}
+
+.input_name_mg {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+}
+.input_pass_mg {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 20px;
+}
+
+.btn_mg{
+  margin-top: 40px;
   cursor: pointer;
 }
