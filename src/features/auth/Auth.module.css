@@ -16,7 +16,6 @@
 .card {
   display: flex;
   flex-direction: column;
-  padding: 0px;
   height: 600px;
   width: 500px;
   border-radius: 50px;
@@ -28,7 +27,7 @@
 .button {
   margin: 0 auto;
   margin-top: 60px;
-  width: 200px;
+  width: 250px;
   height: 40px;
   border: 0;
   color: dimgray;
@@ -46,22 +45,41 @@
   cursor: pointer;
 }
 
-.login_mg {
+.login_tx {
   margin-top: 80px;
+  font-size: 50px;
 }
 
-.input_name_mg {
+.input_name {
+  height: 30px;
+  border: none;
+  outline: none;
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 30px;
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
 }
-.input_pass_mg {
+.input_name::placeholder{
+  color: gray;
+}
+.input_pass {
+  height: 30px;
+  border: none;
+  outline: none;
   margin-left: 100px;
   margin-right: 100px;
-  margin-top: 20px;
+  margin-top: 30px;
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+}
+.input_pass::placeholder{
+  color: gray;
 }
 
-.btn_mg{
+.span_tx{
+  font-weight: 600;
+  font-size: 20px;
   margin-top: 40px;
   cursor: pointer;
 }

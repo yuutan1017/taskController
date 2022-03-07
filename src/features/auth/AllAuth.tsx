@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
 
-import { TextField } from "@material-ui/core";
-
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../../app/store";
 import {
@@ -37,25 +35,19 @@ const AllAuth: React.FC = () => {
   return (
     <div className={styles.back}>
       <div className={styles.card}>
-        <h1 className={styles.login_mg}>{isLoginView ? "Login" : "Register"}</h1>
-        <TextField
-          className={styles.input_name_mg}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          label="Username"
+        <h1 className={styles.login_tx}>{isLoginView ? "Login" : "Register"}</h1>
+        <input
+          placeholder="username"
+          className={styles.input_name}
           type="text"
           name="username"
           value={credential.username}
           onChange={handleInputChange}
         />
       <br />
-        <TextField
-          className={styles.input_pass_mg}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          label="Password"
+        <input
+          placeholder="password"
+          className={styles.input_pass}
           type="password"
           name="password"
           value={credential.password}
@@ -67,7 +59,7 @@ const AllAuth: React.FC = () => {
         >
           {isLoginView ? "Login" : "Register"}
         </button>
-        <span className={styles.btn_mg} onClick={() => dispatch(toggleMode())}>
+        <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>
         {isLoginView ? "Create new account ?" : "Back to Login"}
         </span>
       </div>
