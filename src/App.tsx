@@ -2,23 +2,24 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Avatar, createMuiTheme } from '@material-ui/core';
 import { makeStyles, MuiThemeProvider, Theme } from '@material-ui/core';
-import { ExitToApp, Polymer } from '@material-ui/icons';
+import { ExitToApp  } from '@material-ui/icons';
 
 import {
   selectLoginUser,
   selectProfiles,
   fetchAsyncGetMyProf,
-  fetchAsyncGetProfList,
+  fetchAsyncGetProfs,
   fetchAsyncUpdateProf
 } from './features/auth/authSlice';
 import {
+  initialState,
   fetchAsyncGetTasks,
   fetchAsyncGetUsers,
-  fetchAsyncCreateCategory,
   selectEditedTask,
   selectTasks,
-  fetchAsyncGetCategory,
-  editTask
+  selectTask,
+  editTask,
+  fetchAsyncGetCategory
 } from './features/task/taskSlice';
 import styles from './App.module.css';
 
@@ -69,7 +70,7 @@ const App: React.FC = () => {
       await dispatch(fetchAsyncGetMyProf());
       await dispatch(fetchAsyncGetUsers());
       await dispatch(fetchAsyncGetCategory());
-      await dispatch(fetchAsyncGetProfList());
+      await dispatch(fetchAsyncGetProfs());
     };
     fetchLoader();
   }, [dispatch]);
@@ -78,9 +79,27 @@ const App: React.FC = () => {
     <MuiThemeProvider theme={theme}>
       <div className={styles.app_root}>
         <Grid container>
-
           <Grid item xs={4}>
-            <Polymer className={classes.icon}/>
+          <button
+            className={styles.add_button}
+            onClick={() => {
+              dispatch(
+                editTask({
+                  id: 0,
+                  task: "",
+                  description: "",
+                  criteria: "",
+                  status: "1",
+                  category: 1,
+                  estimate: 0,
+                  responsible: loginUser.id,
+                })
+              );
+              dispatch(selectTask(initialState.selectedTask));
+            }}
+          >
+        Add new task
+      </button>
           </Grid>
 
           <Grid item xs={4}>

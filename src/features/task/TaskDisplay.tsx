@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectSelectedTask } from './taskSlice';
 import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+import styles from "./TaskDisplay.module.css";
 
 const TaskDisplay: React.FC = () => {
   const selectedTask = useSelector(selectSelectedTask);
@@ -14,7 +15,7 @@ const TaskDisplay: React.FC = () => {
     { item: "カテゴリー", data: selectedTask.category_item },
     { item: "現状", data: selectedTask.status_name },
     { item: "作成日", data: selectedTask.created_at },
-    { item: "更新", data: selectedTask.updated_at },
+    { item: "更新日", data: selectedTask.update_at },
   ];
 
   if (!selectedTask.task) {
@@ -22,7 +23,7 @@ const TaskDisplay: React.FC = () => {
   }
 
   return (
-    <>
+    <div className={styles.card}>
       <h2>Task details</h2>
       <Table>
         <TableBody>
@@ -36,7 +37,7 @@ const TaskDisplay: React.FC = () => {
           ))}
         </TableBody>
       </Table>
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,69 @@
+.card{
+  padding: 20px 0px 20px;
+  border-radius: 30px;
+  width: 600px;
+  height: 500px;
+  box-shadow: 10px 10px 30px #c8c9cc,
+  -10px -10px 30px #ffffff;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+}
+.addIcon {
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
+  margin-top: 30px;
+  border: none;
+  color: dimgray;
+  border-radius: 90px;
+  background: #EBECF0;
+  box-shadow: 10px 10px 20px #c8c9cc,
+  -5px -5px 20px #ffffff;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.addIcon:hover {
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
+
+.cancel_btn{
+  margin-top: 30px;
+  margin-left: 20px;
+  width: 150px;
+  height: 40px;
+  border: 0;
+  color: dimgray;
+  border-radius: 50px;
+  background: #EBECF0;
+  box-shadow: 5px 5px 20px #c8c9cc,
+  -5px -5px 20px #ffffff;
+  font-size: 20px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.cancel_btn:hover{
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
+
+.save_btn{
+  width: 150px;
+  height: 40px;
+  border: 0;
+  color: dimgray;
+  border-radius: 50px;
+  background: #EBECF0;
+  box-shadow: 5px 5px 20px #c8c9cc,
+  -5px -5px 20px #ffffff;
+  font-size: 20px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.save_btn:hover{
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}

@@ -58,7 +58,7 @@ export interface READ_TASK {
   owner: number;
   owner_username: string;
   created_at: string;
-  updated_at: string;
+  update_at: string;
 }
 
 export interface POST_TASK {

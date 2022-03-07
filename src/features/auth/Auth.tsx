@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
-import { makeStyles, Theme } from "@material-ui/core/styles";
-import { TextField, Button } from "@material-ui/core";
 
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../../app/store";
@@ -13,14 +11,7 @@ import {
   selectIsLoginView,
 } from "./authSlice";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  button: {
-    margin: theme.spacing(3),
-  },
-}));
-
-const Auth: React.FC = () => {
-  const classes = useStyles();
+const AllAuth: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const isLoginView = useSelector(selectIsLoginView);
   const [credential, setCredential] = useState({ username: "", password: "" });
@@ -41,47 +32,39 @@ const Auth: React.FC = () => {
       }
     }
   };
-
   return (
-    <div className={styles.auth_root}>
-      <h1>{isLoginView ? "Login" : "Register"}</h1>
+    <div className={styles.back}>
+      <div className={styles.card}>
+        <h1 className={styles.login_tx}>{isLoginView ? "Login" : "Register"}</h1>
+        <input
+          placeholder="username"
+          className={styles.input_name}
+          type="text"
+          name="username"
+          value={credential.username}
+          onChange={handleInputChange}
+        />
       <br />
-      <TextField
-        InputLabelProps={{
-          shrink: true,
-        }}
-        label="Username"
-        type="text"
-        name="username"
-        value={credential.username}
-        onChange={handleInputChange}
-      />
-      <br />
-      <TextField
-        InputLabelProps={{
-          shrink: true,
-        }}
-        label="Password"
-        type="password"
-        name="password"
-        value={credential.password}
-        onChange={handleInputChange}
-      />
-      <br />
-      <Button
-        variant="contained"
-        color="primary"
-        size="small"
-        className={classes.button}
-        onClick={login}
-      >
-        {isLoginView ? "Login" : "Register"}
-      </Button>
-      <span onClick={() => dispatch(toggleMode())}>
+        <input
+          placeholder="password"
+          className={styles.input_pass}
+          type="password"
+          name="password"
+          value={credential.password}
+          onChange={handleInputChange}
+        />
+        <button
+          className={styles.button}
+          onClick={login}
+        >
+          {isLoginView ? "Login" : "Register"}
+        </button>
+        <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>
         {isLoginView ? "Create new account ?" : "Back to Login"}
-      </span>
+        </span>
+      </div>
     </div>
   );
 };
 
-export default Auth;
+export default AllAuth;

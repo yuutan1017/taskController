@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
 import axios from "axios";
 import {
   AUTH_STATE,
@@ -8,8 +8,8 @@ import {
   POST_PROFILE,
   PROFILE,
   JWT,
-  USER
-} from '../types';
+  USER,
+} from "../types";
 
 export const fetchAsyncLogin = createAsyncThunk(
   "auth/login",
@@ -63,6 +63,7 @@ export const fetchAsyncCreateProf = createAsyncThunk(
   async () => {
     const res = await axios.post<PROFILE>(
       `${process.env.REACT_APP_API_URL}/api/profile/`,
+      { img: null },
       {
         headers: {
           "Content-Type": "application/json",
@@ -74,8 +75,8 @@ export const fetchAsyncCreateProf = createAsyncThunk(
   }
 );
 
-export const fetchAsyncGetProfList = createAsyncThunk(
-  "auth/getProfList",
+export const fetchAsyncGetProfs = createAsyncThunk(
+  "auth/getProfiles",
   async () => {
     const res = await axios.get<PROFILE[]>(
       `${process.env.REACT_APP_API_URL}/api/profile/`,
@@ -114,15 +115,11 @@ const initialState: AUTH_STATE = {
     id: 0,
     username: "",
   },
-  profiles: [{
-    id: 0,
-    user_profile: 0,
-    img: null,
-  }]
+  profiles: [{ id: 0, user_profile: 0, img: null }],
 };
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     toggleMode(state) {
@@ -147,7 +144,7 @@ export const authSlice = createSlice({
       }
     );
     builder.addCase(
-      fetchAsyncGetProfList.fulfilled,
+      fetchAsyncGetProfs.fulfilled,
       (state, action: PayloadAction<PROFILE[]>) => {
         return {
           ...state,

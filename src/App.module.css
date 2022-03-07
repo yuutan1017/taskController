@@ -1,9 +1,12 @@
+* {
+  background-color: #ebecf0;
+  /* outline: 1px solid magenta; */
+}
 .app_root {
   text-align: center;
-  background-color: white;
   font-family: serif;
   color: gray;
-  margin: 25px;
+  margin: 40px;
 }
 .app_logoutIcon {
   background-color: transparent;
@@ -24,4 +27,24 @@
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+.add_button {
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 45px;
+  border: 0;
+  color: dimgray;
+  border-radius: 50px;
+  background: #ebecf0;
+  box-shadow: 10px 10px 20px #c8c9cc, -5px -5px 20px #ffffff;
+  font-size: 20px;
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+.add_button:hover {
+  background-color: #ebecf0;
+  box-shadow: -4px -4px 6px 2px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
 }

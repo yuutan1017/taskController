@@ -121,7 +121,7 @@ export const initialState: TASK_STATE = {
       owner: 0,
       owner_username: "",
       created_at: "",
-      updated_at: "",
+      update_at: "",
     },
   ],
   editedTask: {
@@ -149,7 +149,7 @@ export const initialState: TASK_STATE = {
     owner: 0,
     owner_username: "",
     created_at: "",
-    updated_at: "",
+    update_at: "",
   },
   users: [
     {

@@ -1,3 +1,23 @@
+/* *{
+  outline: 1px solid magenta;
+} */
+
+.card {
+  margin: 20px;
+  padding-top: 5px;
+  min-height: 95%;
+  border-radius: 50px;
+  box-shadow: inset 20px 20px 30px #c8c9cc, inset -10px -10px 30px #ffffff;
+}
+.card:hover {
+  background-color: #ebecf0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+}
+
+.table {
+  margin: 45px;
+}
+
 .list_icon {
   cursor: pointer;
   background-color: transparent;
@@ -5,13 +25,17 @@
   outline: none;
   font-size: 20px;
   margin-top: 10px;
-  color: dimgray; 
+  color: dimgray;
 }
 
 .list_hover {
   cursor: pointer;
+  border: 3px;
 }
-button :disabled{
+.button :disabled {
   color: white;
   cursor: none;
+}
+.edit_delete {
+  font-weight: bold;
 }

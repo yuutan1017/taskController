@@ -6,12 +6,8 @@ import {
   MenuItem,
   FormControl,
   Select,
-  Button,
-  Fab,
   Modal,
 } from "@material-ui/core";
-import SaveIcon from "@material-ui/icons/Save";
-import AddIcon from "@material-ui/icons/Add";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -26,6 +22,7 @@ import {
 } from "./taskSlice";
 import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
+import styles from "./TaskForm.module.css";
 
 const useStyles = makeStyles((theme: Theme) => ({
   field: {
@@ -127,6 +124,7 @@ const TaskForm: React.FC = () => {
   ));
 
   return (
+    <div className={styles.card}>
     <div>
       <h2>{editedTask.id ? "Update Task" : "New Task"}</h2>
       <form>
@@ -211,14 +209,12 @@ const TaskForm: React.FC = () => {
           </Select>
         </FormControl>
 
-        <Fab
-          size="small"
-          color="primary"
+        <button
           onClick={handleOpen}
-          className={classes.addIcon}
+          className={styles.addIcon}
         >
-          <AddIcon />
-        </Fab>
+          +
+        </button>
 
         <Modal open={open} onClose={handleClose}>
           <div style={modalStyle} className={classes.paper}>
@@ -232,12 +228,8 @@ const TaskForm: React.FC = () => {
               value={inputText}
               onChange={handleInputTextChange}
             />
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              className={classes.saveModal}
-              startIcon={<SaveIcon />}
+            <button
+              className={styles.add_button}
               disabled={isCatDisabled}
               onClick={() => {
                 dispatch(fetchAsyncCreateCategory(inputText));
@@ -245,16 +237,12 @@ const TaskForm: React.FC = () => {
               }}
             >
               SAVE
-            </Button>
+            </button>
           </div>
         </Modal>
         <br />
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          className={classes.button}
-          startIcon={<SaveIcon />}
+        <button
+          className={styles.save_btn}
           disabled={isDisabled}
           onClick={
             editedTask.id !== 0
@@ -263,21 +251,20 @@ const TaskForm: React.FC = () => {
           }
         >
           {editedTask.id !== 0 ? "Update" : "Save"}
-        </Button>
+        </button>
 
-        <Button
-          variant="contained"
-          color="default"
-          size="small"
+        <button
+          className={styles.cancel_btn}
           onClick={() => {
             dispatch(editTask(initialState.editedTask));
             dispatch(selectTask(initialState.selectedTask));
           }}
         >
           Cancel
-        </Button>
+        </button>
       </form>
-    </div>
+      </div>
+      </div>
   )
 }
 

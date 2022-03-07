@@ -5,7 +5,7 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter } from 'react-router-dom';
-import AllAuth from './features/auth/AllAuth';
+import AllAuth from './features/auth/Auth';
 
 
 ReactDOM.render(

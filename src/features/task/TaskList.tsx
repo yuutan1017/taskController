@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./TaskList.module.css";
 
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import {
-  Button,
   Avatar,
   Badge,
   Table,
@@ -32,9 +30,6 @@ import { SORT_STATE, READ_TASK } from "../types";
 const useStyles = makeStyles((theme: Theme) => ({
   table: {
     tableLayout: "fixed",
-  },
-  button: {
-    margin: theme.spacing(3),
   },
   small: {
     margin: "auto",
@@ -115,118 +110,99 @@ const TaskList: React.FC = () => {
   }; 
 
   return (
-    <>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        size="small"
-        startIcon={<AddCircleOutlineIcon />}
-        onClick={() => {
-          dispatch(
-            editTask({
-              id: 0,
-              task: "",
-              description: "",
-              criteria: "",
-              status: "1",
-              category: 1,
-              estimate: 0,
-              responsible: loginUser.id,
-            })
-          );
-          dispatch(selectTask(initialState.selectedTask));
-        }}
-      >Add new task
-      </Button>
-      {tasks[0]?.task && <Table size="small" className={classes.table}>
-        <TableHead>
-          <TableRow>
-            {columns.map(
-              (column, colIndex) =>
-                (column === "task" ||
-                  column === "status" ||
-                  column === "category" ||
-                  column === "estimate" ||
-                  column === "responsible" ||
-                  column === "owner") && (
-                    <TableCell align="center" key={colIndex}>
-                      <TableSortLabel
-                        active={state.activeKey === column}
-                        direction={state.order}
-                        onClick={() => handleClickSortColumn(column)}
-                      >
-                        <strong>{column}</strong>
-                      </TableSortLabel>
-                    </TableCell>
-                  )
-              )}
-              <TableCell>edit/delete</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {state.rows.map((row, rowIndex) => (
-            <TableRow hover key={rowIndex}>
-              {Object.keys(row).map(
-                (key, colIndex) =>
-                  (key === "task" ||
-                    key === "status_name" ||
-                    key === "category_item" ||
-                    key === "estimate") && (
-                    <TableCell
-                      align="center"
-                      className={styles.tasklist__hover}
-                      key={`${rowIndex}+${colIndex}`}
-                      onClick={() => {
-                        dispatch(selectTask(row));
-                        dispatch(editTask(initialState.editedTask));
-                      }}
-                    >
-                      {key === "status_name" ? (
-                        renderSwitch(row[key])
-                      ) : (
-                        <span>{row[key]}</span>
-                      )}
-                    </TableCell>
-                  )
-              )}
+    <div className={styles.card}>
+      <div className={styles.table}>
+        {tasks[0]?.task && <Table size="small" className={classes.table}>
+          <TableHead>
+            <TableRow>
+              {columns.map(
+                (column, colIndex) =>
+                  (column === "task" ||
+                    column === "status" ||
+                    column === "category" ||
+                    column === "estimate" ||
+                    column === "responsible" ||
+                    column === "owner") && (
+                      <TableCell align="center" key={colIndex}>
+                        <TableSortLabel
+                          active={state.activeKey === column}
+                          direction={state.order}
+                          onClick={() => handleClickSortColumn(column)}
+                        >
+                          <strong>{column}</strong>
+                        </TableSortLabel>
+                      </TableCell>
+                    )
+                )}
               <TableCell>
-                <Avatar
-                  className={classes.small}
-                  alt="resp"
-                  src={conditionalSrc(row["responsible"])}
-                />
+                <div className={styles.edit_delete}>edit/delete</div>
               </TableCell>
-              <TableCell>
-                <Avatar
-                  className={classes.small}
-                  alt="owner"
-                  src={conditionalSrc(row["owner"])}
-                />
-              </TableCell>
-              <TableCell align="center">
-                  <button
-                    className={styles.list_icon}
-                    onClick={() => {
-                      dispatch(fetchAsyncDeleteTask(row.id));
-                    }}
-                    disabled={row["owner"] !== loginUser.id}
-                  >
-                    <DeleteOutlineOutlinedIcon />
-                  </button>
-                  <button
-                    className={styles.list_icon}
-                    onClick={() => dispatch(editTask(row))}
-                    disabled={row["owner"] !== loginUser.id}
-                  >
-                    <EditOutlinedIcon />
-                  </button>
-                </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>}
-    </>
+          </TableHead>
+          <TableBody>
+            {state.rows.map((row, rowIndex) => (
+              <TableRow hover key={rowIndex}>
+                {Object.keys(row).map(
+                  (key, colIndex) =>
+                    (key === "task" ||
+                      key === "status_name" ||
+                      key === "category_item" ||
+                      key === "estimate") && (
+                      <TableCell
+                        align="center"
+                        className={styles.list_hover}
+                        key={`${rowIndex}+${colIndex}`}
+                        onClick={() => {
+                          dispatch(selectTask(row));
+                          dispatch(editTask(initialState.editedTask));
+                        }}
+                      >
+                        {key === "status_name" ? (
+                          renderSwitch(row[key])
+                        ) : (
+                          <span>{row[key]}</span>
+                        )}
+                      </TableCell>
+                    )
+                )}
+                <TableCell>
+                  <Avatar
+                    className={classes.small}
+                    alt="resp"
+                    src={conditionalSrc(row["responsible"])}
+                  />
+                </TableCell>
+                <TableCell>
+                  <Avatar
+                    className={classes.small}
+                    alt="owner"
+                    src={conditionalSrc(row["owner"])}
+                  />
+                </TableCell>
+                <TableCell align="center">
+                    <button
+                      className={styles.list_icon}
+                      onClick={() => {
+                        dispatch(fetchAsyncDeleteTask(row.id));
+                      }}
+                      disabled={row["owner"] !== loginUser.id}
+                    >
+                      <DeleteOutlineOutlinedIcon />
+                    </button>
+                    <button
+                      className={styles.list_icon}
+                      onClick={() => dispatch(editTask(row))}
+                      disabled={row["owner"] !== loginUser.id}
+                    >
+                      <EditOutlinedIcon />
+                    </button>
+                  </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>}
+      </div>
+    </div>
   );
 };
 
