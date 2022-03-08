@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     textAlign: "center",
     width: 400,
-    backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -67,7 +66,6 @@ const TaskForm: React.FC = () => {
   const editedTask = useSelector(selectEditedTask);
 
   const [open, setOpen] = useState(false);
-  const [modalStyle] = useState(getModalStyle);
   const [inputText, setInputText] = useState('');
 
   const handleOpen = () => {
@@ -81,7 +79,6 @@ const TaskForm: React.FC = () => {
     editedTask.description.length === 0 ||
     editedTask.criteria.length === 0;
 
-  const isCatDisabled = inputText.length === 0;
   const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
@@ -174,7 +171,8 @@ const TaskForm: React.FC = () => {
           value={editedTask.criteria}
           onChange={handleInputChange}
         />
-        <br />
+          <br />
+          
         <FormControl className={classes.field}>
           <InputLabel>Responsible</InputLabel>
           <Select
@@ -210,14 +208,15 @@ const TaskForm: React.FC = () => {
         </FormControl>
 
         <button
+          type="button"
           onClick={handleOpen}
           className={styles.addIcon}
         >
           +
         </button>
 
-        <Modal open={open} onClose={handleClose}>
-          <div style={modalStyle} className={classes.paper}>
+        <Modal open={open} onClose={handleClose} className={styles.modal_bg}>
+          <div className={styles.modal}>
             <TextField
               className={classes.field}
               InputLabelProps={{
@@ -227,10 +226,11 @@ const TaskForm: React.FC = () => {
               type="text"
               value={inputText}
               onChange={handleInputTextChange}
-            />
+              />
             <button
+              type="button"
               className={styles.add_button}
-              disabled={isCatDisabled}
+              // disabled={isCatDisabled}
               onClick={() => {
                 dispatch(fetchAsyncCreateCategory(inputText));
                 handleClose();

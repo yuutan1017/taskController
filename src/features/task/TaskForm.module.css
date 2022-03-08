@@ -1,3 +1,7 @@
+/* *{
+  outline: 1px solid magenta;
+} */
+
 .card{
   padding: 20px 0px 20px;
   border-radius: 30px;
@@ -15,7 +19,7 @@
   font-size: 30px;
   width: 40px;
   height: 40px;
-  margin-top: 30px;
+  margin-top: 20px;
   border: none;
   color: dimgray;
   border-radius: 90px;
@@ -25,6 +29,32 @@
   transition: box-shadow 0.2s ease-in-out;
 }
 .addIcon:hover {
+  background-color: #EBECF0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
+.modal_bg{
+  background-color: rgba(200, 200, 200, 0.2);
+}
+.modal{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  text-align: center;
+  position: relative;
+}
+.add_button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  margin-top: 20px;
+  background: #EBECF0;
+  box-shadow: 5px 5px 20px #c8c9cc,
+  -5px -5px 20px #ffffff;
+  cursor: pointer;
+}
+.add_button:hover {
   background-color: #EBECF0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
