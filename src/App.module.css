@@ -1,12 +1,12 @@
 * {
-  background-color: #ebecf0;
   /* outline: 1px solid magenta; */
 }
 .app_root {
+  background-color: #ebecf0;
   text-align: center;
   font-family: serif;
   color: gray;
-  margin: 40px;
+  padding: 20px 60px 70px 60px;
 }
 .app_logoutIcon {
   background-color: transparent;

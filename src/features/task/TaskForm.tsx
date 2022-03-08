@@ -29,33 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(2),
     minWidth: 240,
   },
-  button: {
-    margin: theme.spacing(3),
-  },
-  addIcon: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(2),
-  },
-  saveModal: {
-    marginTop: theme.spacing(4),
-    marginLeft: theme.spacing(2),
-  },
-  paper: {
-    position: "absolute",
-    textAlign: "center",
-    width: 400,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
 }));
-
-function getModalStyle() {
-  return {
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  }
-}
 
 const TaskForm: React.FC = () => {
   const classes = useStyles();
@@ -230,7 +204,6 @@ const TaskForm: React.FC = () => {
             <button
               type="button"
               className={styles.add_button}
-              // disabled={isCatDisabled}
               onClick={() => {
                 dispatch(fetchAsyncCreateCategory(inputText));
                 handleClose();
