@@ -6,7 +6,6 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import {
   Avatar,
-  Badge,
   Table,
   TableHead,
   TableCell,
@@ -35,8 +34,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "auto",
     width: theme.spacing(3),
     height: theme.spacing(3),
-  }, 
-}))
+  },
+}));
 
 const TaskList: React.FC = () => {
   const classes = useStyles();
@@ -62,7 +61,7 @@ const TaskList: React.FC = () => {
         return newOrder === "asc" ? -1 : 1;
       } else {
         return 0;
-      };
+      }
     });
 
     setState({
@@ -71,7 +70,7 @@ const TaskList: React.FC = () => {
       activeKey: column,
     });
   };
-  
+
   useEffect(() => {
     setState((state) => ({
       ...state,
@@ -83,21 +82,21 @@ const TaskList: React.FC = () => {
     switch (statusName) {
       case "Not started":
         return (
-          <Badge variant="dot" color="error">
+          <div className={styles.red}>
             {statusName}
-          </Badge>
+          </div>
         );
       case "On going":
         return (
-          <Badge variant="dot" color="primary">
+          <div className={styles.blue}>
             {statusName}
-          </Badge>
+          </div>
         );
       case "Done":
         return (
-          <Badge variant="dot" color="secondary">
+          <div className={styles.green}>
             {statusName}
-          </Badge>
+          </div>
         );
       default:
         return null;
@@ -105,24 +104,27 @@ const TaskList: React.FC = () => {
   };
 
   const conditionalSrc = (user: number) => {
-    const loginProfile = profiles.filter((prof) => prof.user_profile === user)[0];
+    const loginProfile = profiles.filter(
+      (prof) => prof.user_profile === user
+    )[0];
     return loginProfile?.img !== null ? loginProfile?.img : undefined;
-  }; 
+  };
 
   return (
     <div className={styles.card}>
       <div className={styles.table}>
-        {tasks[0]?.task && <Table size="small" className={classes.table}>
-          <TableHead>
-            <TableRow>
-              {columns.map(
-                (column, colIndex) =>
-                  (column === "task" ||
-                    column === "status" ||
-                    column === "category" ||
-                    column === "estimate" ||
-                    column === "responsible" ||
-                    column === "owner") && (
+        {tasks[0]?.task && (
+          <Table size="small" className={classes.table}>
+            <TableHead>
+              <TableRow>
+                {columns.map(
+                  (column, colIndex) =>
+                    (column === "task" ||
+                      column === "status" ||
+                      column === "category" ||
+                      column === "estimate" ||
+                      column === "responsible" ||
+                      column === "owner") && (
                       <TableCell align="center" key={colIndex}>
                         <TableSortLabel
                           active={state.activeKey === column}
@@ -134,52 +136,52 @@ const TaskList: React.FC = () => {
                       </TableCell>
                     )
                 )}
-              <TableCell>
-                <div className={styles.edit_delete}>edit/delete</div>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {state.rows.map((row, rowIndex) => (
-              <TableRow hover key={rowIndex}>
-                {Object.keys(row).map(
-                  (key, colIndex) =>
-                    (key === "task" ||
-                      key === "status_name" ||
-                      key === "category_item" ||
-                      key === "estimate") && (
-                      <TableCell
-                        align="center"
-                        className={styles.list_hover}
-                        key={`${rowIndex}+${colIndex}`}
-                        onClick={() => {
-                          dispatch(selectTask(row));
-                          dispatch(editTask(initialState.editedTask));
-                        }}
-                      >
-                        {key === "status_name" ? (
-                          renderSwitch(row[key])
-                        ) : (
-                          <span>{row[key]}</span>
-                        )}
-                      </TableCell>
-                    )
-                )}
                 <TableCell>
-                  <Avatar
-                    className={classes.small}
-                    alt="resp"
-                    src={conditionalSrc(row["responsible"])}
-                  />
+                  <div className={styles.edit_delete}>edit/delete</div>
                 </TableCell>
-                <TableCell>
-                  <Avatar
-                    className={classes.small}
-                    alt="owner"
-                    src={conditionalSrc(row["owner"])}
-                  />
-                </TableCell>
-                <TableCell align="center">
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {state.rows.map((row, rowIndex) => (
+                <TableRow hover key={rowIndex}>
+                  {Object.keys(row).map(
+                    (key, colIndex) =>
+                      (key === "task" ||
+                        key === "status_name" ||
+                        key === "category_item" ||
+                        key === "estimate") && (
+                        <TableCell
+                          align="center"
+                          className={styles.list_hover}
+                          key={`${rowIndex}+${colIndex}`}
+                          onClick={() => {
+                            dispatch(selectTask(row));
+                            dispatch(editTask(initialState.editedTask));
+                          }}
+                        >
+                          {key === "status_name" ? (
+                            renderSwitch(row[key])
+                          ) : (
+                            <span>{row[key]}</span>
+                          )}
+                        </TableCell>
+                      )
+                  )}
+                  <TableCell>
+                    <Avatar
+                      className={classes.small}
+                      alt="resp"
+                      src={conditionalSrc(row["responsible"])}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Avatar
+                      className={classes.small}
+                      alt="owner"
+                      src={conditionalSrc(row["owner"])}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
                     <button
                       className={styles.list_icon}
                       onClick={() => {
@@ -197,13 +199,14 @@ const TaskList: React.FC = () => {
                       <EditOutlinedIcon />
                     </button>
                   </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </div>
     </div>
   );
 };
 
-export default TaskList
+export default TaskList;

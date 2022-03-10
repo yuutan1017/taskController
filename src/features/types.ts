@@ -47,7 +47,6 @@ export interface READ_TASK {
   id: number;
   task: string;
   description: string;
-  criteria: string;
   status: string;
   status_name: string;
   category: number;
@@ -65,7 +64,6 @@ export interface POST_TASK {
   id: number;
   task: string;
   description: string;
-  criteria: string;
   status: string;
   category: number;
   estimate: number;

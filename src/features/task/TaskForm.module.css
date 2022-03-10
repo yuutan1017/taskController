@@ -3,10 +3,10 @@
 } */
 
 .card{
-  padding: 20px 0px 20px;
+  padding: 20px 0px 0px;
   border-radius: 30px;
   width: 600px;
-  height: 500px;
+  height: 450px;
   box-shadow: 10px 10px 30px #c8c9cc,
   -10px -10px 30px #ffffff;
   transition: box-shadow 0.2s ease-in-out;
@@ -19,8 +19,9 @@
   font-size: 30px;
   width: 40px;
   height: 40px;
-  margin-top: 20px;
   border: none;
+  margin-left: 70px;
+  margin-bottom: 10px;
   color: dimgray;
   border-radius: 90px;
   background: #EBECF0;
@@ -62,7 +63,7 @@
 }
 
 .cancel_btn{
-  margin-top: 30px;
+  margin-top: 10px;
   margin-left: 20px;
   width: 150px;
   height: 40px;

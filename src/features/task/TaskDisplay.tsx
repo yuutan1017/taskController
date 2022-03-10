@@ -9,8 +9,8 @@ const TaskDisplay: React.FC = () => {
   const rows = [
     { item: "タスク", data: selectedTask.task },
     { item: "説明", data: selectedTask.description },
-    { item: "オーナー", data: selectedTask.owner_username },
-    { item: "責任者", data: selectedTask.responsible_username },
+    { item: "責任者", data: selectedTask.owner_username },
+    { item: "担当者", data: selectedTask.responsible_username },
     { item: "期限日数", data: selectedTask.estimate },
     { item: "カテゴリー", data: selectedTask.category_item },
     { item: "現状", data: selectedTask.status_name },
