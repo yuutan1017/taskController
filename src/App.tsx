@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import MediaQuery from "react-responsive";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Avatar } from "@material-ui/core";
 import { ExitToApp } from "@material-ui/icons";
@@ -26,7 +27,6 @@ import TaskList from "./features/task/TaskList";
 import TaskDisplay from "./features/task/TaskDisplay";
 import TaskForm from "./features/task/TaskForm";
 import { AppDispatch } from "./app/store";
-
 
 const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -59,86 +59,95 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-      <div className={styles.app_root}>
-        <Grid container>
-          <Grid item xs={4}>
-            <button
-              className={styles.add_button}
-              onClick={() => {
-                dispatch(
-                  editTask({
-                    id: 0,
-                    task: "",
-                    description: "",
-                    status: "1",
-                    category: 1,
-                    deadline: "",
-                    owner: loginUser.id,
-                  })
-                );
-                dispatch(selectTask(initialState.selectedTask));
-              }}
-            >
-              Add new task
-            </button>
-          </Grid>
-
-          <Grid item xs={4}>
-            <h1>Task Controller</h1>
-          </Grid>
-
-          <Grid item xs={4}>
-            <div className={styles.app_logout}>
-              <button className={styles.app_logoutIcon} onClick={Logout}>
-                <ExitToApp fontSize="large" />
-              </button>
-
-              <input
-                type="file"
-                id="imageInput"
-                hidden={true}
-                onChange={(e) =>
-                  dispatch(
-                    fetchAsyncUpdateProf({
-                      id: loginProfile.id,
-                      img: e.target.files !== null ? e.target.files[0] : null,
-                    })
-                  )
-                }
-              />
+    <>
+      <MediaQuery query="(min-width: 768px)">
+        <div className={styles.app_root}>
+          <Grid container>
+            <Grid item xs={4}>
               <button
-                className={styles.app_button}
-                onClick={handlerEditPicture}
+                className={styles.add_button}
+                onClick={() => {
+                  dispatch(
+                    editTask({
+                      id: 0,
+                      task: "",
+                      description: "",
+                      status: "1",
+                      category: 1,
+                      deadline: "",
+                      owner: loginUser.id,
+                    })
+                  );
+                  dispatch(selectTask(initialState.selectedTask));
+                }}
               >
-                <Avatar
-                  alt="avatar"
-                  src={
-                    loginProfile?.img !== null ? loginProfile?.img : undefined
+                Add new task
+              </button>
+            </Grid>
+
+            <Grid item xs={4}>
+              <h1>Task Controller</h1>
+            </Grid>
+
+            <Grid item xs={4}>
+              <div className={styles.app_logout}>
+                <button className={styles.app_logoutIcon} onClick={Logout}>
+                  <ExitToApp fontSize="large" />
+                </button>
+
+                <input
+                  type="file"
+                  id="imageInput"
+                  hidden={true}
+                  onChange={(e) =>
+                    dispatch(
+                      fetchAsyncUpdateProf({
+                        id: loginProfile.id,
+                        img: e.target.files !== null ? e.target.files[0] : null,
+                      })
+                    )
                   }
                 />
-              </button>
-            </div>
-          </Grid>
+                <button
+                  className={styles.app_button}
+                  onClick={handlerEditPicture}
+                >
+                  <Avatar
+                    alt="avatar"
+                    src={
+                      loginProfile?.img !== null ? loginProfile?.img : undefined
+                    }
+                  />
+                </button>
+              </div>
+            </Grid>
 
-          <Grid item xs={6}>
-            {tasks[0]?.task && <TaskList />}
-          </Grid>
+            <Grid item xs={6}>
+              {tasks[0]?.task && <TaskList />}
+            </Grid>
 
-          <Grid item xs={6}>
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-              style={{ minHeight: "80vh" }}
-            >
-              <Grid item>
-                {editedTask.status ? <TaskForm /> : <TaskDisplay />}
+            <Grid item xs={6}>
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+                style={{ minHeight: "80vh" }}
+              >
+                <Grid item>
+                  {editedTask.status ? <TaskForm /> : <TaskDisplay />}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
+      </MediaQuery>
+      <MediaQuery query="(max-width: 767px)">
+        <div>
+          sumafo
+        </div>
+      </MediaQuery>
+    </>
   );
 };
 
