@@ -8,12 +8,12 @@ import {
   fetchAsyncLogin,
   fetchAsyncRegister,
   fetchAsyncCreateProf,
-  selectIsLoginView,
+  selectLoginView,
 } from "./authSlice";
 
-const AllAuth: React.FC = () => {
+const Auth: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const isLoginView = useSelector(selectIsLoginView);
+  const isLoginView = useSelector(selectLoginView);
   const [credential, setCredential] = useState({ username: "", password: "" });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,4 +67,4 @@ const AllAuth: React.FC = () => {
   );
 };
 
-export default AllAuth;
+export default Auth;

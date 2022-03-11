@@ -65,11 +65,6 @@ const TaskForm: React.FC = () => {
     dispatch(editTask({ ...editedTask, [name]: value }));
   };
 
-  const handleSelectResChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-    const value = e.target.value as number;
-    dispatch(editTask({ ...editedTask, responsible: value }));
-  };
-
   const handleSelectStatusChange = (
     e: React.ChangeEvent<{ value: unknown }>
   ) => {
@@ -100,14 +95,13 @@ const TaskForm: React.FC = () => {
         <form>
           <TextField
             className={classes.field}
-            label="Estimate [days]"
-            type="number"
-            name="estimate"
-            InputProps={{ inputProps: { min: 0, max: 1000 } }}
+            label="Deadline"
+            type="text"
+            name="deadline"
             InputLabelProps={{
               shrink: true,
             }}
-            value={editedTask.estimate}
+            value={editedTask.deadline}
             onChange={handleInputChange}
           />
           <TextField
@@ -133,17 +127,6 @@ const TaskForm: React.FC = () => {
             value={editedTask.description}
             onChange={handleInputChange}
           />
-
-          <FormControl className={classes.field}>
-            <InputLabel>Responsible</InputLabel>
-            <Select
-              name="responsible"
-              onChange={handleSelectResChange}
-              value={editedTask.responsible}
-            >
-              {userOptions}
-            </Select>
-          </FormControl>
           <FormControl className={classes.field}>
             <InputLabel>Status</InputLabel>
             <Select
@@ -166,7 +149,6 @@ const TaskForm: React.FC = () => {
               {catOptions}
             </Select>
           </FormControl>
-          <br />
           <button type="button" onClick={handleOpen} className={styles.addIcon}>
             +
           </button>

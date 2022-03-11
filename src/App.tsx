@@ -72,8 +72,8 @@ const App: React.FC = () => {
                     description: "",
                     status: "1",
                     category: 1,
-                    estimate: 0,
-                    responsible: loginUser.id,
+                    deadline: "",
+                    owner: loginUser.id,
                   })
                 );
                 dispatch(selectTask(initialState.selectedTask));

@@ -110,7 +110,7 @@ export const fetchAsyncUpdateProf = createAsyncThunk(
 );
 
 const initialState: AUTH_STATE = {
-  isLoginView: true,
+  loginView: true,
   loginUser: {
     id: 0,
     username: "",
@@ -123,7 +123,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     toggleMode(state) {
-      state.isLoginView = !state.isLoginView;
+      state.loginView = !state.loginView;
     },
   },
   extraReducers: (builder) => {
@@ -168,7 +168,7 @@ export const authSlice = createSlice({
 
 export const { toggleMode } = authSlice.actions;
 
-export const selectIsLoginView = (state: RootState) => state.auth.isLoginView;
+export const selectLoginView = (state: RootState) => state.auth.loginView;
 export const selectLoginUser = (state: RootState) => state.auth.loginUser;
 export const selectProfiles = (state: RootState) => state.auth.profiles;
 

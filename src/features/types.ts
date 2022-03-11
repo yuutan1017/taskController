@@ -37,7 +37,7 @@ export interface USER {
 }
 
 export interface AUTH_STATE {
-  isLoginView: boolean;
+  loginView: boolean;
   loginUser: LOGIN_USER;
   profiles: PROFILE[];
 }
@@ -51,9 +51,7 @@ export interface READ_TASK {
   status_name: string;
   category: number;
   category_item: string;
-  estimate: number;
-  responsible: number;
-  responsible_username: string;
+  deadline: string;
   owner: number;
   owner_username: string;
   created_at: string;
@@ -66,8 +64,8 @@ export interface POST_TASK {
   description: string;
   status: string;
   category: number;
-  estimate: number;
-  responsible: number;
+  deadline: string;
+  owner: number;
 }
 
 export interface CATEGORY {

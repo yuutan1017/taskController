@@ -122,8 +122,7 @@ const TaskList: React.FC = () => {
                     (column === "task" ||
                       column === "status" ||
                       column === "category" ||
-                      column === "estimate" ||
-                      column === "responsible" ||
+                      column === "deadline" ||
                       column === "owner") && (
                       <TableCell align="center" key={colIndex}>
                         <TableSortLabel
@@ -149,7 +148,7 @@ const TaskList: React.FC = () => {
                       (key === "task" ||
                         key === "status_name" ||
                         key === "category_item" ||
-                        key === "estimate") && (
+                        key === "deadline") && (
                         <TableCell
                           align="center"
                           className={styles.list_hover}
@@ -167,13 +166,6 @@ const TaskList: React.FC = () => {
                         </TableCell>
                       )
                   )}
-                  <TableCell>
-                    <Avatar
-                      className={classes.small}
-                      alt="resp"
-                      src={conditionalSrc(row["responsible"])}
-                    />
-                  </TableCell>
                   <TableCell>
                     <Avatar
                       className={classes.small}
