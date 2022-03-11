@@ -18,6 +18,10 @@
   margin: 45px;
 }
 
+.avatar{
+  margin: 0px 0px 0px 10px;
+}
+
 .list_icon {
   cursor: pointer;
   background-color: transparent;

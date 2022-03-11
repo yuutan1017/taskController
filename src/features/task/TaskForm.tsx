@@ -14,7 +14,6 @@ import {
   fetchAsyncCreateTask,
   fetchAsyncUpdateTask,
   fetchAsyncCreateCategory,
-  selectUsers,
   selectEditedTask,
   selectCategory,
   editTask,
@@ -35,7 +34,6 @@ const TaskForm: React.FC = () => {
   const classes = useStyles();
   const dispatch: AppDispatch = useDispatch();
 
-  const users = useSelector(selectUsers);
   const category = useSelector(selectCategory);
   const editedTask = useSelector(selectEditedTask);
 
@@ -59,9 +57,6 @@ const TaskForm: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value: string | number = e.target.value;
     const name = e.target.name;
-    if (name === "estimate") {
-      value = Number(value);
-    }
     dispatch(editTask({ ...editedTask, [name]: value }));
   };
 
@@ -77,11 +72,6 @@ const TaskForm: React.FC = () => {
     dispatch(editTask({ ...editedTask, category: value }));
   };
 
-  let userOptions = users.map((user) => (
-    <MenuItem key={user.id} value={user.id}>
-      {user.username}
-    </MenuItem>
-  ));
   let catOptions = category.map((cat) => (
     <MenuItem key={cat.id} value={cat.id}>
       {cat.item}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./TaskList.module.css";
 
-import { makeStyles, Theme } from "@material-ui/core/styles";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import {
@@ -26,19 +25,8 @@ import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
 import { SORT_STATE, READ_TASK } from "../types";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  table: {
-    tableLayout: "fixed",
-  },
-  small: {
-    margin: "auto",
-    width: theme.spacing(3),
-    height: theme.spacing(3),
-  },
-}));
 
 const TaskList: React.FC = () => {
-  const classes = useStyles();
   const dispatch: AppDispatch = useDispatch();
   const tasks = useSelector(selectTasks);
   const loginUser = useSelector(selectLoginUser);
@@ -114,7 +102,7 @@ const TaskList: React.FC = () => {
     <div className={styles.card}>
       <div className={styles.table}>
         {tasks[0]?.task && (
-          <Table size="small" className={classes.table}>
+          <Table size="small">
             <TableHead>
               <TableRow>
                 {columns.map(
@@ -136,7 +124,7 @@ const TaskList: React.FC = () => {
                     )
                 )}
                 <TableCell>
-                  <div className={styles.edit_delete}>edit/delete</div>
+                  <div className={styles.edit_delete}>delete/edit</div>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -168,7 +156,7 @@ const TaskList: React.FC = () => {
                   )}
                   <TableCell>
                     <Avatar
-                      className={classes.small}
+                      className={styles.avatar}
                       alt="owner"
                       src={conditionalSrc(row["owner"])}
                     />

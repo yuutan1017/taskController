@@ -84,7 +84,7 @@ const App: React.FC = () => {
           </Grid>
 
           <Grid item xs={4}>
-            <h1>Task Board</h1>
+            <h1>Task Controller</h1>
           </Grid>
 
           <Grid item xs={4}>
