@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectSelectedTask } from './taskSlice';
-import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectSelectedTask } from "./taskSlice";
+import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 import styles from "./TaskDisplay.module.css";
 
 const TaskDisplay: React.FC = () => {
@@ -23,7 +23,7 @@ const TaskDisplay: React.FC = () => {
 
   return (
     <div className={styles.card}>
-      <h2>Task details</h2>
+      <h2 className={styles.title}>Task Details</h2>
       <Table>
         <TableBody>
           {rows.map((row) => (
@@ -37,7 +37,7 @@ const TaskDisplay: React.FC = () => {
         </TableBody>
       </Table>
     </div>
-  )
-}
+  );
+};
 
 export default TaskDisplay;

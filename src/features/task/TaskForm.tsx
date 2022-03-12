@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
 import {
   TextField,
   InputLabel,
@@ -25,10 +24,8 @@ import styles from "./TaskForm.module.css";
 
 const TaskForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-
   const category = useSelector(selectCategory);
   const editedTask = useSelector(selectEditedTask);
-
   const [open, setOpen] = useState(false);
   const [inputText, setInputText] = useState("");
 
@@ -99,7 +96,7 @@ const TaskForm: React.FC = () => {
             onChange={handleInputChange}
           />
           <TextField
-                        className={styles.grid_1}
+            className={styles.grid_1}
             InputLabelProps={{
               shrink: true,
             }}
