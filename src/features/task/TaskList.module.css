@@ -16,6 +16,7 @@
 
 .table {
   margin: 45px;
+  min-width: 50%;
 }
 
 .avatar{

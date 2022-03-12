@@ -1,42 +1,68 @@
 /* *{
   outline: 1px solid magenta;
 } */
-
-.card{
-  padding: 20px 0px 0px;
+.card {
+  margin: auto;
+  margin-top: 8rem;
+  padding: 20px 10px 0px;
   border-radius: 30px;
-  width: 600px;
+  width: 500px;
   height: 450px;
-  box-shadow: 10px 10px 30px #c8c9cc,
-  -10px -10px 30px #ffffff;
+  box-shadow: 10px 10px 30px #c8c9cc, -10px -10px 30px #ffffff;
   transition: box-shadow 0.2s ease-in-out;
 }
 .card:hover {
-  background-color: #EBECF0;
+  background-color: #ebecf0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
 }
+.title {
+  display: flex;
+  justify-content: center;
+  color: #3f50b5;
+  font-size: 28px;
+}
+.form {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 7% 8% 20% 5% 5% 20% 7% 8%;
+  grid-template-rows: 40% 40% 45%;
+}
+.grid_1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.grid_2 {
+  grid-column-start: 6;
+  grid-column-end: 9;
+}
+.grid_3{
+  grid-column-start: 3;
+  grid-column-end: 7;
+}
+
 .addIcon {
+  margin-left: 20px;
+  margin-bottom: 20px;
   font-size: 30px;
   width: 40px;
   height: 40px;
   border: none;
-  margin-top: 30px;
+  margin-top: 10px;
   color: dimgray;
   border-radius: 90px;
-  background: #EBECF0;
-  box-shadow: 10px 10px 20px #c8c9cc,
-  -5px -5px 20px #ffffff;
+  background: #ebecf0;
+  box-shadow: 10px 10px 20px #c8c9cc, -5px -5px 20px #ffffff;
   transition: box-shadow 0.2s ease-in-out;
 }
 .addIcon:hover {
-  background-color: #EBECF0;
+  background-color: #ebecf0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
 }
-.modal_bg{
+.modal_bg {
   background-color: rgba(200, 200, 200, 0.2);
 }
-.modal{
+.modal {
   background-color: #ebecf0;
   top: 50%;
   left: 50%;
@@ -50,51 +76,48 @@
   height: 40px;
   border: none;
   margin-top: 20px;
-  background: #EBECF0;
-  box-shadow: 5px 5px 20px #c8c9cc,
-  -5px -5px 20px #ffffff;
+  background: #ebecf0;
+  box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
   cursor: pointer;
 }
 .add_button:hover {
-  background-color: #EBECF0;
+  background-color: #ebecf0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
 }
 
-.cancel_btn{
-  margin-top: 30px;
-  margin-left: 20px;
-  width: 150px;
+.cancel_btn {
+  grid-column-start: 6;
+  grid-column-end: 9;
   height: 40px;
   border: 0;
   color: dimgray;
   border-radius: 50px;
-  background: #EBECF0;
-  box-shadow: 5px 5px 20px #c8c9cc,
-  -5px -5px 20px #ffffff;
+  background: #ebecf0;
+  box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
   font-size: 20px;
   transition: box-shadow 0.2s ease-in-out;
 }
-.cancel_btn:hover{
-  background-color: #EBECF0;
+.cancel_btn:hover {
+  background-color: #ebecf0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
 }
 
-.save_btn{
-  width: 150px;
+.save_btn {
+  grid-column-start: 1;
+  grid-column-end: 4;
   height: 40px;
   border: 0;
   color: dimgray;
   border-radius: 50px;
-  background: #EBECF0;
-  box-shadow: 5px 5px 20px #c8c9cc,
-  -5px -5px 20px #ffffff;
+  background: #ebecf0;
+  box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
   font-size: 20px;
   transition: box-shadow 0.2s ease-in-out;
 }
-.save_btn:hover{
-  background-color: #EBECF0;
+.save_btn:hover {
+  background-color: #ebecf0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
 }

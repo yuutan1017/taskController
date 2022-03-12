@@ -23,15 +23,7 @@ import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
 import styles from "./TaskForm.module.css";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  field: {
-    margin: theme.spacing(2),
-    minWidth: 240,
-  },
-}));
-
 const TaskForm: React.FC = () => {
-  const classes = useStyles();
   const dispatch: AppDispatch = useDispatch();
 
   const category = useSelector(selectCategory);
@@ -47,8 +39,7 @@ const TaskForm: React.FC = () => {
     setOpen(false);
   };
   const isDisabled =
-    editedTask.task.length === 0 ||
-    editedTask.description.length === 0;
+    editedTask.task.length === 0 || editedTask.description.length === 0;
 
   const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
@@ -79,12 +70,14 @@ const TaskForm: React.FC = () => {
   ));
 
   return (
-    <div className={styles.card}>
-      <div>
-        <h2>{editedTask.id ? "Update Task" : "New Task"}</h2>
-        <form>
+    <>
+      <div className={styles.card}>
+        <h2 className={styles.title}>
+          {editedTask.id ? "Update Task" : "New Task"}
+        </h2>
+        <form className={styles.form}>
           <TextField
-            className={classes.field}
+            className={styles.grid_1}
             label="Deadline"
             type="text"
             name="deadline"
@@ -95,7 +88,7 @@ const TaskForm: React.FC = () => {
             onChange={handleInputChange}
           />
           <TextField
-            className={classes.field}
+            className={styles.grid_2}
             InputLabelProps={{
               shrink: true,
             }}
@@ -105,9 +98,8 @@ const TaskForm: React.FC = () => {
             value={editedTask.task}
             onChange={handleInputChange}
           />
-          <br />
           <TextField
-            className={classes.field}
+                        className={styles.grid_1}
             InputLabelProps={{
               shrink: true,
             }}
@@ -117,7 +109,7 @@ const TaskForm: React.FC = () => {
             value={editedTask.description}
             onChange={handleInputChange}
           />
-          <FormControl className={classes.field}>
+          <FormControl className={styles.grid_2}>
             <InputLabel>Status</InputLabel>
             <Select
               name="status"
@@ -129,7 +121,7 @@ const TaskForm: React.FC = () => {
               <MenuItem value={3}>Done</MenuItem>
             </Select>
           </FormControl>
-          <FormControl className={classes.field}>
+          <FormControl className={styles.grid_3}>
             <InputLabel>Category</InputLabel>
             <Select
               name="category"
@@ -142,7 +134,7 @@ const TaskForm: React.FC = () => {
           <button type="button" onClick={handleOpen} className={styles.addIcon}>
             +
           </button>
-          <br />
+
           <button
             className={styles.save_btn}
             disabled={isDisabled}
@@ -168,7 +160,7 @@ const TaskForm: React.FC = () => {
           <Modal open={open} onClose={handleClose} className={styles.modal_bg}>
             <div className={styles.modal}>
               <TextField
-                className={classes.field}
+                className={styles.field}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -191,7 +183,7 @@ const TaskForm: React.FC = () => {
           </Modal>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
