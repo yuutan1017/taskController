@@ -14,7 +14,7 @@ import {
 const Auth: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const isLoginView = useSelector(selectLoginView);
-  const [credential, setCredential] = useState({ username: "", password: "" });
+  const [credential, setCredential] = useState({ username: "admin", password: "0000" });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

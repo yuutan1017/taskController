@@ -1,74 +1,62 @@
-/* * {
-  outline: 1px solid magenta;
-} */
-/* pc画面 */
-@media screen and (min-width: 767px) {
-  .header {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 100px 50px;
-  }
-  .button_style {
-    margin: auto;
-  }
-  .color {
-    color: #3f50b5;
-    font-size: 40px;
-  }
-  .add_button {
-    margin: 0 auto;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    width: 300px;
-    height: 45px;
-    border: 0;
-    color: dimgray;
-    border-radius: 50px;
-    background: #ebecf0;
-    box-shadow: 10px 10px 20px #c8c9cc, -5px -5px 20px #ffffff;
-    font-size: 20px;
-    transition: box-shadow 0.4s ease-in-out;
-  }
-  .add_button:hover {
-    background-color: #ebecf0;
-    box-shadow: -4px -4px 6px 2px #c8c9cc, 2px 2px 3px 1px #ffffff;
-    cursor: pointer;
-  }
-  .title {
-    margin: auto;
-  }
-  .icons {
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-  }
-  .logoutIcon {
-    background-color: transparent;
-    color: dimgray;
-    margin-top: 4px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  .avatar {
-    background-color: transparent;
-    margin-top: 2px;
-    margin-left: 7px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  .main {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 750px;
-  }
+.header {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 100px 50px;
 }
-
-@media screen and (max-width: 767px) {
-  .main {
-    display: flex;
-  }
+.button_style {
+  margin: auto;
+}
+.color {
+  color: #3f50b5;
+  font-size: 40px;
+}
+.add_button {
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 45px;
+  border: 0;
+  color: dimgray;
+  border-radius: 50px;
+  background: #ebecf0;
+  box-shadow: 10px 10px 20px #c8c9cc, -5px -5px 20px #ffffff;
+  font-size: 20px;
+  transition: box-shadow 0.4s ease-in-out;
+}
+.add_button:hover {
+  background-color: #ebecf0;
+  box-shadow: -4px -4px 6px 2px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
+.title {
+  margin: auto;
+}
+.icons {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+.logoutIcon {
+  background-color: transparent;
+  color: dimgray;
+  margin-top: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.avatar {
+  background-color: transparent;
+  margin-top: 2px;
+  margin-left: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.main {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 750px;
 }

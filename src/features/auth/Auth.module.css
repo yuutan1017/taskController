@@ -1,185 +1,86 @@
-/* PC表示 */
-@media screen and (min-width: 768px) {
-  .back {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-    background-color: #ebecf0;
-    color: dimgray;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    height: 600px;
-    width: 500px;
-    border-radius: 50px;
-    background: #ebecf0;
-    box-shadow: inset 10px 10px 30px #c8c9cc, inset -10px -10px 30px #ffffff;
-  }
-  .card:hover {
-    background-color: #ebecf0;
-    box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-  }
-
-  .button {
-    margin: 0 auto;
-    margin-top: 60px;
-    width: 250px;
-    height: 40px;
-    border: 0;
-    color: dimgray;
-    border-radius: 50px;
-    background: #ebecf0;
-    box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
-    font-size: 24px;
-    transition: box-shadow 0.4s ease-in-out;
-  }
-
-  .button:hover {
-    background-color: #ebecf0;
-    box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-    cursor: pointer;
-  }
-
-  .login_tx {
-    margin-top: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 50px;
-  }
-
-  .input_name {
-    height: 30px;
-    border: none;
-    outline: none;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 30px;
-    background-color: #ebecf0;
-    box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-  }
-  .input_name::placeholder {
-    color: gray;
-  }
-  .input_pass {
-    height: 30px;
-    border: none;
-    outline: none;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 30px;
-    background-color: #ebecf0;
-    box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-  }
-  .input_pass::placeholder {
-    color: gray;
-  }
-  .span_tx {
-    font-weight: 600;
-    font-size: 20px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-  }
+.back {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-color: #ebecf0;
+  color: dimgray;
 }
-/* * {
-  outline: 1px solid magenta;
-} */
 
-/* スマホ表示 */
-@media screen and (max-width: 480px) {
-  .back {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-    background-color: #ebecf0;
-    color: dimgray;
-  }
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 500px;
+  border-radius: 50px;
+  background: #ebecf0;
+  box-shadow: inset 10px 10px 30px #c8c9cc, inset -10px -10px 30px #ffffff;
+}
+.card:hover {
+  background-color: #ebecf0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+}
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-    width: 350px;
-    margin: 0px 10px;
-    border-radius: 50px;
-    background: #ebecf0;
-    box-shadow: inset 10px 10px 30px #c8c9cc, inset -10px -10px 30px #ffffff;
-  }
-  .card:hover {
-    background-color: #ebecf0;
-    box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-  }
+.button {
+  margin: 0 auto;
+  margin-top: 60px;
+  width: 250px;
+  height: 40px;
+  border: 0;
+  color: dimgray;
+  border-radius: 50px;
+  background: #ebecf0;
+  box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
+  font-size: 24px;
+  transition: box-shadow 0.4s ease-in-out;
+}
 
-  .button {
-    margin: 0 auto;
-    margin-top: 60px;
-    width: 200px;
-    height: 60px;
-    border: 0;
-    color: dimgray;
-    border-radius: 50px;
-    background: #ebecf0;
-    box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
-    font-size: 24px;
-    transition: box-shadow 0.4s ease-in-out;
-  }
+.button:hover {
+  background-color: #ebecf0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
 
-  .button:hover {
-    background-color: #ebecf0;
-    box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-    cursor: pointer;
-  }
+.login_tx {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 50px;
+}
 
-  .login_tx {
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 50px;
-  }
-
-  .input_name {
-    height: 40px;
-    border: none;
-    border-bottom: 2px solid dimgray;
-    outline: none;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 20px;
-    background-color: #ebecf0;
-  }
-  .input_name::placeholder {
-    font-size: 16px;
-    color: gray;
-  }
-  .input_pass {
-    height: 40px;
-    border: none;
-    border-bottom: 2px solid dimgray;
-    outline: none;
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: #ebecf0;
-  }
-  .input_pass::placeholder {
-    font-size: 16px;
-    color: gray;
-  }
-
-  .span_tx {
-    font-weight: 600;
-    font-size: 30px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-  }
+.input_name {
+  height: 30px;
+  border: none;
+  outline: none;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+  background-color: #ebecf0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+}
+.input_name::placeholder {
+  color: gray;
+}
+.input_pass {
+  height: 30px;
+  border: none;
+  outline: none;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+  background-color: #ebecf0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+}
+.input_pass::placeholder {
+  color: gray;
+}
+.span_tx {
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
 }

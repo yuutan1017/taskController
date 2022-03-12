@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import MediaQuery from "react-responsive";
 import { useSelector, useDispatch } from "react-redux";
 import { Avatar } from "@material-ui/core";
 import { ExitToApp } from "@material-ui/icons";
