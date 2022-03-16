@@ -39,25 +39,25 @@ const TaskList: React.FC = () => {
     activeKey: "",
   });
 
-  const handleClickSortColumn = (column: keyof READ_TASK) => {
-    const isDesc = column === state.activeKey && state.order === "desc";
-    const newOrder = isDesc ? "asc" : "desc";
-    const sortedRows = Array.from(state.rows).sort((a, b) => {
-      if (a[column] > b[column]) {
-        return newOrder === "asc" ? 1 : -1;
-      } else if (a[column] < b[column]) {
-        return newOrder === "asc" ? -1 : 1;
-      } else {
-        return 0;
-      }
-    });
+  // const handleClickSortColumn = (column: keyof READ_TASK) => {
+  //   const isDesc = column === state.activeKey && state.order === "desc";
+  //   const newOrder = isDesc ? "asc" : "desc";
+  //   const sortedRows = Array.from(state.rows).sort((a, b) => {
+  //     if (a[column] > b[column]) {
+  //       return newOrder === "asc" ? 1 : -1;
+  //     } else if (a[column] < b[column]) {
+  //       return newOrder === "asc" ? -1 : 1;
+  //     } else {
+  //       return 0;
+  //     }
+  //   });
 
-    setState({
-      rows: sortedRows,
-      order: newOrder,
-      activeKey: column,
-    });
-  };
+  //   setState({
+  //     rows: sortedRows,
+  //     order: newOrder,
+  //     activeKey: column,
+  //   });
+  // };
 
   useEffect(() => {
     setState((state) => ({
@@ -113,13 +113,14 @@ const TaskList: React.FC = () => {
                       column === "deadline" ||
                       column === "owner") && (
                       <TableCell align="center" key={colIndex}>
-                        <TableSortLabel
+                        {/* <TableSortLabel
                           active={state.activeKey === column}
                           direction={state.order}
-                          onClick={() => handleClickSortColumn(column)}
+                          // onClick={() => handleClickSortColumn(column)}
                         >
                           <strong>{column}</strong>
-                        </TableSortLabel>
+                        </TableSortLabel> */}
+                         <strong>{column}</strong>
                       </TableCell>
                     )
                 )}
