@@ -39,10 +39,10 @@ const TaskList: React.FC = () => {
     activeKey: "",
   });
 
-  const handleClickSortColumn = (column: keyof READ_TASK) => {
-    const isDesc = column === state.activeKey && state.order === "desc";
-    const newOrder = isDesc ? "asc" : "desc";
-    const sortedRows = Array.from(state.rows).sort((a, b) => {
+  const handleClickSortColumn = async (column: keyof READ_TASK) => {
+    const isDesc = column === await state.activeKey && state.order === "desc";
+    const newOrder = await isDesc ? "asc" : "desc";
+    const sortedRows = await Array.from(state.rows).sort((a, b) => {
       if (a[column] > b[column]) {
         return newOrder === "asc" ? 1 : -1;
       } else if (a[column] < b[column]) {
