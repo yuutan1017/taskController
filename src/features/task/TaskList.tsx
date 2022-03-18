@@ -39,10 +39,10 @@ const TaskList: React.FC = () => {
     activeKey: "",
   });
 
-  const handleClickSortColumn = async (column: keyof READ_TASK) => {
-    const isDesc = column === await state.activeKey && state.order === "desc";
-    const newOrder = await isDesc ? "asc" : "desc";
-    const sortedRows = await Array.from(state.rows).sort((a, b) => {
+  const handleClickSortColumn = (column: keyof READ_TASK) => {
+    const isDesc = column === state.activeKey && state.order === "desc";
+    const newOrder = isDesc ? "asc" : "desc";
+    const sortedRows = Array.from(state.rows).sort((a, b) => {
       if (a[column] > b[column]) {
         return newOrder === "asc" ? 1 : -1;
       } else if (a[column] < b[column]) {
@@ -95,7 +95,7 @@ const TaskList: React.FC = () => {
     const loginProfile = profiles.filter(
       (prof) => prof.user_profile === user
     )[0];
-    return loginProfile?.img !== null ? loginProfile?.img : undefined;
+    return loginProfile?.img ? loginProfile?.img : undefined;
   };
 
   return (
@@ -120,7 +120,6 @@ const TaskList: React.FC = () => {
                         >
                           <strong>{column}</strong>
                         </TableSortLabel>
-                         {/* <strong>{column}</strong> */}
                       </TableCell>
                     )
                 )}
