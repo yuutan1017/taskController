@@ -55,6 +55,7 @@ const Auth: React.FC = () => {
         />
         <button
           className={styles.button}
+          type="submit"
           onClick={login}
         >
           {isLoginView ? "Login" : "Register"}
