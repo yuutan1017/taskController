@@ -35,7 +35,9 @@ const Auth: React.FC = () => {
   return (
     <div className={styles.back}>
       <div className={styles.card}>
-        <h1 className={styles.login_tx}>{isLoginView ? "Login" : "Register"}</h1>
+        <h1 className={styles.login_tx}>
+          {isLoginView ? "Login" : "Register"}
+        </h1>
         <input
           placeholder="username"
           className={styles.input_name}
@@ -44,7 +46,7 @@ const Auth: React.FC = () => {
           value={credential.username}
           onChange={handleInputChange}
         />
-      <br />
+        <br />
         <input
           placeholder="password"
           className={styles.input_pass}
@@ -53,15 +55,11 @@ const Auth: React.FC = () => {
           value={credential.password}
           onChange={handleInputChange}
         />
-        <button
-          className={styles.button}
-          type="submit"
-          onClick={login}
-        >
+        <button className={styles.button} type="submit" onClick={login}>
           {isLoginView ? "Login" : "Register"}
         </button>
         <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>
-        {isLoginView ? "Create new account ?" : "Back to Login"}
+          {isLoginView ? "Create new account ?" : "Back to Login"}
         </span>
       </div>
     </div>
