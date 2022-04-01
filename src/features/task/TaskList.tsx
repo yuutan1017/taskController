@@ -111,7 +111,7 @@ const TaskList: React.FC = () => {
                       column === "status" ||
                       column === "category" ||
                       column === "deadline" ||
-                      column === "owner") && (
+                      column === "owner_username") && (
                       <TableCell align="center" key={colIndex}>
                         <TableSortLabel
                           active={state.activeKey === column}
