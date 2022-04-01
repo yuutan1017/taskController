@@ -112,10 +112,10 @@ export const fetchAsyncUpdateProf = createAsyncThunk(
 const initialState: AUTH_STATE = {
   loginView: true,
   loginUser: {
-    id: 1,
+    id: 0,
     username: "",
   },
-  profiles: [{ id: 1, user_profile: 0, img: null }],
+  profiles: [{ id: 0, user_profile: 0, img: null }],
 };
 
 export const authSlice = createSlice({

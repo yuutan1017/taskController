@@ -37,7 +37,7 @@ const App: React.FC = () => {
   const loginProfile = profiles.filter(
     (prof) => prof.user_profile === loginUser.id
   )[0];
-  console.log(loginProfile);
+  
   const Logout = () => {
     localStorage.removeItem("localJWT");
     window.location.href = "/";
