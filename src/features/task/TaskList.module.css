@@ -3,7 +3,8 @@
   padding-top: 5px;
   min-height: 95%;
   border-radius: 50px;
-  box-shadow: inset 20px 20px 30px #c8c9cc, inset -10px -10px 30px #ffffff;
+  box-shadow: 20px 20px 40px #c8c9cc, -10px -10px 30px #ffffff;
+  transition: box-shadow 0.4s ease-in-out;
 }
 .card:hover {
   background-color: #ebecf0;

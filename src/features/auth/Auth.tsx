@@ -55,7 +55,7 @@ const Auth: React.FC = () => {
           value={credential.password}
           onChange={handleInputChange}
         />
-        <button className={styles.button} type="submit" onClick={login}>
+        <button className={styles.button} type="button" onClick={login}>
           {isLoginView ? "Login" : "Register"}
         </button>
         <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>

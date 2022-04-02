@@ -161,7 +161,6 @@ const TaskForm: React.FC = () => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                label="New category"
                 type="text"
                 value={inputText}
                 onChange={handleInputTextChange}

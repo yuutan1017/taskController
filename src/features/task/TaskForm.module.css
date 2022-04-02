@@ -64,23 +64,33 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 500px;
+  height: 100px;
   text-align: center;
+  justify-content: center;
+  display: flex;
   position: relative;
 }
 .add_button {
   width: 100px;
   height: 40px;
   border: none;
-  margin-top: 20px;
+  margin-top: 30px;
   background: #ebecf0;
   box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
+  justify-content: center;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
 }
 .add_button:hover {
   background-color: #ebecf0;
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
+}
+
+.field{
+  margin-right: auto;
+  justify-content: center;
 }
 
 .cancel_btn {
