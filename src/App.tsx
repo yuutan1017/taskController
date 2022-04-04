@@ -114,8 +114,7 @@ const App: React.FC = () => {
         </div>
       </div>
       <div className={styles.main}>
-        <div>{tasks[0]?.task && <TaskList />}</div>
-
+        <TaskList />
         <div>
           <div>{editedTask.status ? <TaskForm /> : <TaskDisplay />}</div>
         </div>
