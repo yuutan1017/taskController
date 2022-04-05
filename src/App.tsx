@@ -35,9 +35,8 @@ const App: React.FC = () => {
   const profiles = useSelector(selectProfiles);
 
   const loginProfile = profiles.filter(
-    (prof) => prof.user_profile === loginUser.id
+    (prof) => prof.id === loginUser.id
   )[0];
-  console.log(loginProfile);
   
   const Logout = () => {
     localStorage.removeItem("localJWT");
