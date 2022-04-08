@@ -128,7 +128,7 @@ export const initialState: TASK_STATE = {
     status: "",
     category: 0,
     deadline: "",
-    owner: 0,
+    owner: 0
   },
   selectedTask: {
     id: 0,

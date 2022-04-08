@@ -12,8 +12,8 @@
 }
 
 .table {
-  margin: 50px;
-  min-width: 70%;
+  margin: 40px 40px 40px 30px;
+  min-width: 80%;
 }
 
 .avatar {
@@ -31,7 +31,6 @@
 }
 
 .list_hover {
-  cursor: pointer;
   border: 3px;
 }
 .button :disabled {
@@ -53,4 +52,7 @@
 .green {
   font-size: medium;
   color: green;
+}
+
+.modal{
 }

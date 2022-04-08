@@ -7,6 +7,7 @@ import {
   Select,
   Modal,
 } from "@material-ui/core";
+import dayjs from "dayjs";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -20,7 +21,7 @@ import {
 } from "./taskSlice";
 import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
-import styles from "./TaskForm.module.css";
+import styles from "./Form.module.css";
 
 const ModalTaskForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -66,6 +67,8 @@ const ModalTaskForm: React.FC = () => {
     </MenuItem>
   ));
 
+  const today = dayjs().format("YYYY-MM-DD");
+
   return (
     <>
       <div className={styles.card}>
@@ -76,7 +79,8 @@ const ModalTaskForm: React.FC = () => {
           <TextField
             className={styles.grid_1}
             label="Deadline"
-            type="text"
+            type="date"
+            defaultValue={today}
             name="deadline"
             InputLabelProps={{
               shrink: true,

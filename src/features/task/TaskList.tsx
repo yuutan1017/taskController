@@ -24,7 +24,7 @@ import { selectLoginUser, selectProfiles } from "../auth/authSlice";
 import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
 import { SORT_STATE, READ_TASK } from "../types";
-
+import ModalTaskDisplay from "./Modal_TaskDetail";
 
 const TaskList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -69,23 +69,11 @@ const TaskList: React.FC = () => {
   const renderSwitch = (statusName: string) => {
     switch (statusName) {
       case "Not started":
-        return (
-          <div className={styles.red}>
-            {statusName}
-          </div>
-        );
+        return <div className={styles.red}>{statusName}</div>;
       case "On going":
-        return (
-          <div className={styles.blue}>
-            {statusName}
-          </div>
-        );
+        return <div className={styles.blue}>{statusName}</div>;
       case "Done":
-        return (
-          <div className={styles.green}>
-            {statusName}
-          </div>
-        );
+        return <div className={styles.green}>{statusName}</div>;
       default:
         return null;
     }
@@ -98,94 +86,116 @@ const TaskList: React.FC = () => {
     return loginProfile?.img ? loginProfile?.img : undefined;
   };
 
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  };
+
   return (
-    <div className={styles.card}>
-      <div className={styles.table}>
-        {tasks[0]?.task && (
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                {columns.map(
-                  (column, colIndex) =>
-                    (column === "task" ||
-                      column === "status" ||
-                      column === "category" ||
-                      column === "deadline" ||
-                      column === "owner") && (
-                      <TableCell align="center" key={colIndex}>
-                        <TableSortLabel
-                          active={state.activeKey === column}
-                          direction={state.order}
-                          onClick={() => handleClickSortColumn(column)}
-                        >
-                          <strong>{column}</strong>
-                        </TableSortLabel>
-                      </TableCell>
-                    )
-                )}
-                <TableCell>
-                  <div className={styles.edit_delete}>delete/edit</div>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {state.rows.map((row, rowIndex) => (
-                <TableRow hover key={rowIndex}>
-                  {Object.keys(row).map(
-                    (key, colIndex) =>
-                      (key === "task" ||
-                        key === "status_name" ||
-                        key === "category_item" ||
-                        key === "deadline") && (
-                        <TableCell
-                          align="center"
-                          className={styles.list_hover}
-                          key={`${rowIndex}+${colIndex}`}
-                          onClick={() => {
-                            dispatch(selectTask(row));
-                            dispatch(editTask(initialState.editedTask));
-                          }}
-                        >
-                          {key === "status_name" ? (
-                            renderSwitch(row[key])
-                          ) : (
-                            <span>{row[key]}</span>
-                          )}
+    <>
+      <div className={styles.card}>
+        <div className={styles.table}>
+          {tasks[0]?.task && (
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  {columns.map(
+                    (column, colIndex) =>
+                      (column === "task" ||
+                        column === "status" ||
+                        column === "category" ||
+                        column === "deadline" ||
+                        column === "owner") && (
+                        <TableCell align="center" key={colIndex}>
+                          <TableSortLabel
+                            active={state.activeKey === column}
+                            direction={state.order}
+                            onClick={() => handleClickSortColumn(column)}
+                          >
+                            <strong>{column}</strong>
+                          </TableSortLabel>
                         </TableCell>
                       )
                   )}
                   <TableCell>
-                    <Avatar
-                      className={styles.avatar}
-                      alt="owner"
-                      src={conditionalSrc(row["owner"])}
-                    />
+                    <div className={styles.edit_delete}>delete/edit</div>
                   </TableCell>
-                  <TableCell align="center">
-                    <button
-                      className={styles.list_icon}
-                      onClick={() => {
-                        dispatch(fetchAsyncDeleteTask(row.id));
-                      }}
-                      disabled={row["owner"] !== loginUser.id}
-                    >
-                      <DeleteOutlineOutlinedIcon />
-                    </button>
-                    <button
-                      className={styles.list_icon}
-                      onClick={() => dispatch(editTask(row))}
-                      disabled={row["owner"] !== loginUser.id}
-                    >
-                      <EditOutlinedIcon />
-                    </button>
+                  <TableCell>
+                    <div className={styles.edit_delete}>detail</div>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
+              </TableHead>
+              <TableBody>
+                {state.rows.map((row, rowIndex) => (
+                  <TableRow hover key={rowIndex}>
+                    {Object.keys(row).map(
+                      (key, colIndex) =>
+                        (key === "task" ||
+                          key === "status_name" ||
+                          key === "category_item" ||
+                          key === "deadline") && (
+                          <TableCell
+                            align="center"
+                            className={styles.list_hover}
+                            key={`${rowIndex}+${colIndex}`}
+                            onClick={() => {
+                              dispatch(editTask(initialState.editedTask));
+                            }}
+                          >
+                            {key === "status_name" ? (
+                              renderSwitch(row[key])
+                            ) : (
+                              <span>{row[key]}</span>
+                            )}
+                          </TableCell>
+                        )
+                    )}
+                    <TableCell>
+                      <Avatar
+                        className={styles.avatar}
+                        alt="owner"
+                        src={conditionalSrc(row["owner"])}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                      <button
+                        className={styles.list_icon}
+                        onClick={() => {
+                          dispatch(fetchAsyncDeleteTask(row.id));
+                        }}
+                        disabled={row["owner"] !== loginUser.id}
+                      >
+                        <DeleteOutlineOutlinedIcon />
+                      </button>
+                      <button
+                        className={styles.list_icon}
+                        onClick={() => dispatch(editTask(row))}
+                        disabled={row["owner"] !== loginUser.id}
+                      >
+                        <EditOutlinedIcon />
+                      </button>
+                    </TableCell>
+                    <TableCell>
+                      <button
+                        onClick={() => {
+                          openModal();
+                          dispatch(selectTask(row));
+                        }}
+                      >
+                        detail
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
+        </div>
       </div>
-    </div>
+      <div className={styles.modal}>
+        <ModalTaskDisplay showModal={showModal} setShowModal={setShowModal} />
+      </div>
+    </>
   );
 };
 

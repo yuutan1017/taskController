@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 
 import { selectSelectedTask } from "./taskSlice";
-import styles from "./TaskDisplay.module.css";
+import styles from "./Detail.module.css";
+import { Props } from "../types";
 
-const ModalTaskDisplay: React.FC = () => {
+const ModalTaskDisplay = ({ showModal, setShowModal }: Props) => {
   const selectedTask = useSelector(selectSelectedTask);
   const rows = [
     { item: "タスク", data: selectedTask.task },
@@ -23,22 +24,26 @@ const ModalTaskDisplay: React.FC = () => {
   }
 
   return (
-    <div className={styles.card}>
-      <h2 className={styles.title}>Task Details</h2>
-      <Table>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.item}>
-              <TableCell align="center">
-                <strong>{row.item}</strong>
-              </TableCell>
-              <TableCell align="center">{row.data}</TableCell>
-            </TableRow>
-          ))}
-          <button>+</button>
-        </TableBody>
-      </Table>
-    </div>
+    <>
+      {showModal ? (
+        <div className={styles.card}>
+          <h2 className={styles.title}>Task Details</h2>
+          <Table>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.item}>
+                  <TableCell align="center">
+                    <strong>{row.item}</strong>
+                  </TableCell>
+                  <TableCell align="center">{row.data}</TableCell>
+                </TableRow>
+              ))}
+              <button onClick={() => setShowModal(false)}>close</button>
+            </TableBody>
+          </Table>
+        </div>
+      ) : null}
+    </>
   );
 };
 

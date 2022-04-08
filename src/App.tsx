@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Avatar } from "@material-ui/core";
 import { ExitToApp } from "@material-ui/icons";
@@ -22,14 +22,11 @@ import {
 import styles from "./App.module.css";
 
 import TaskList from "./features/task/TaskList";
-import ModalTaskDisplay from "./features/task/TaskDisplay-Modal";
-import ModalTaskForm from "./features/task/TaskForm-Modal";
+import ModalTaskForm from "./features/task/Modal_TaskForm";
 import { AppDispatch } from "./app/store";
-
 
 const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const editedTask = useSelector(selectEditedTask);
   const loginUser = useSelector(selectLoginUser);
   const profiles = useSelector(selectProfiles);
 
@@ -57,14 +54,6 @@ const App: React.FC = () => {
     fetchLoader();
   }, [dispatch]);
 
-  // const [isOpen, setIsOpen] = useState(false);
-  // const handleOpen = () => {
-  //   setIsOpen(true);
-  // };
-  // const handleClose = () => {
-  //   setIsOpen(false);
-  // };
-
   return (
     <>
       <div className={styles.header}>
@@ -80,7 +69,7 @@ const App: React.FC = () => {
                   status: "1",
                   category: 1,
                   deadline: "",
-                  owner: loginUser.id,
+                  owner: loginUser.id
                 })
               );
               dispatch(selectTask(initialState.selectedTask));
@@ -122,7 +111,9 @@ const App: React.FC = () => {
       <div className={styles.main}>
         <TaskList />
       </div>
-      <div>{editedTask.status ? <ModalTaskForm /> : <ModalTaskDisplay />}</div>
+      <div>
+          <ModalTaskForm />
+      </div>
     </>
   );
 };

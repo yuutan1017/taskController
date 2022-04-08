@@ -88,6 +88,7 @@ export interface SORT_STATE {
 }
 
 export interface Props{
-  isOpen: boolean;
-  onClick: Function;
+  // onClick: (active: React.MouseEvent<HTMLInputElement>) => void;
+  showModal: boolean;
+  setShowModal: (active:boolean) => void;
 };
