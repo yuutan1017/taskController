@@ -54,5 +54,20 @@
   color: green;
 }
 
-.modal{
+.bg {
+  background-color: rgba(200, 200, 200, 0.2);
+}
+
+.overlay {
+  background-color: #ebecf0;
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 650px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
 }

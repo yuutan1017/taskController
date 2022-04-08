@@ -6,7 +6,7 @@ import { selectSelectedTask } from "./taskSlice";
 import styles from "./Detail.module.css";
 import { Props } from "../types";
 
-const ModalTaskDisplay = ({ showModal, setShowModal }: Props) => {
+const ModalTaskDisplay = () => {
   const selectedTask = useSelector(selectSelectedTask);
   const rows = [
     { item: "タスク", data: selectedTask.task },
@@ -25,24 +25,21 @@ const ModalTaskDisplay = ({ showModal, setShowModal }: Props) => {
 
   return (
     <>
-      {showModal ? (
-        <div className={styles.card}>
-          <h2 className={styles.title}>Task Details</h2>
-          <Table>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.item}>
-                  <TableCell align="center">
-                    <strong>{row.item}</strong>
-                  </TableCell>
-                  <TableCell align="center">{row.data}</TableCell>
-                </TableRow>
-              ))}
-              <button onClick={() => setShowModal(false)}>close</button>
-            </TableBody>
-          </Table>
-        </div>
-      ) : null}
+      <div className={styles.card}>
+        <h2 className={styles.title}>Task Details</h2>
+        <Table>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.item}>
+                <TableCell align="center">
+                  <strong>{row.item}</strong>
+                </TableCell>
+                <TableCell align="center">{row.data}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };

@@ -69,7 +69,7 @@ const App: React.FC = () => {
                   status: "1",
                   category: 1,
                   deadline: "",
-                  owner: loginUser.id
+                  owner: loginUser.id,
                 })
               );
               dispatch(selectTask(initialState.selectedTask));
@@ -108,11 +108,11 @@ const App: React.FC = () => {
           </button>
         </div>
       </div>
+      <div className={styles.new}>
+        <ModalTaskForm />
+      </div>
       <div className={styles.main}>
         <TaskList />
-      </div>
-      <div>
-          <ModalTaskForm />
       </div>
     </>
   );

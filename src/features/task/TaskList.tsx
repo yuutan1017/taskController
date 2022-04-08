@@ -11,6 +11,7 @@ import {
   TableRow,
   TableBody,
   TableSortLabel,
+  Modal,
 } from "@material-ui/core";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -86,9 +87,9 @@ const TaskList: React.FC = () => {
     return loginProfile?.img ? loginProfile?.img : undefined;
   };
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const openModal = () => {
-    setShowModal(true);
+    setShowModal((e) => !e);
   };
 
   return (
@@ -192,9 +193,11 @@ const TaskList: React.FC = () => {
           )}
         </div>
       </div>
-      <div className={styles.modal}>
-        <ModalTaskDisplay showModal={showModal} setShowModal={setShowModal} />
-      </div>
+      <Modal open={showModal} onClose={openModal} className={styles.bg}>
+        <div className={styles.overlay}>
+          <ModalTaskDisplay />
+        </div>
+      </Modal>
     </>
   );
 };
