@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectSelectedTask } from "./taskSlice";
 import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
+
+import { selectSelectedTask } from "./taskSlice";
 import styles from "./TaskDisplay.module.css";
 
-const TaskDisplay: React.FC = () => {
+const ModalTaskDisplay: React.FC = () => {
   const selectedTask = useSelector(selectSelectedTask);
   const rows = [
     { item: "タスク", data: selectedTask.task },
@@ -34,10 +35,11 @@ const TaskDisplay: React.FC = () => {
               <TableCell align="center">{row.data}</TableCell>
             </TableRow>
           ))}
+          <button>+</button>
         </TableBody>
       </Table>
     </div>
   );
 };
 
-export default TaskDisplay;
+export default ModalTaskDisplay;

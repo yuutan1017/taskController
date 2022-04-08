@@ -1,24 +1,23 @@
 .header {
+  margin: 0px 100px;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 100px 50px;
+  grid-template-columns: 33% 34% 33%;
+  grid-template-rows: 140px 50px;
 }
 .button_style {
   margin: auto;
 }
 .color {
-  color: #3f50b5;
-  font-size: 40px;
+  color: #1d38d1;
+  font-size: 50px;
 }
 .add_button {
-  margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  width: 300px;
+  margin: 40px auto;
+  width: 200px;
   height: 45px;
   border: 0;
   color: dimgray;
-  border-radius: 50px;
+  border-radius: 10px;
   background: #ebecf0;
   box-shadow: 10px 10px 20px #c8c9cc, -5px -5px 20px #ffffff;
   font-size: 20px;
@@ -56,7 +55,9 @@
   cursor: pointer;
 }
 .main {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 750px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 60%;
+  height: 100%;
 }

@@ -1,3 +1,7 @@
+/* *{
+  outline: 1px solid magenta; 
+} */
+
 .back {
   display: flex;
   justify-content: center;

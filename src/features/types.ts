@@ -86,3 +86,8 @@ export interface SORT_STATE {
   order: "desc" | "asc";
   activeKey: string;
 }
+
+export interface Props{
+  isOpen: boolean;
+  onClick: Function;
+};

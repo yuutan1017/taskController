@@ -15,7 +15,6 @@ import {
   fetchAsyncGetTasks,
   fetchAsyncGetUsers,
   selectEditedTask,
-  selectTasks,
   selectTask,
   editTask,
   fetchAsyncGetCategory,
@@ -23,21 +22,21 @@ import {
 import styles from "./App.module.css";
 
 import TaskList from "./features/task/TaskList";
-import TaskDisplay from "./features/task/TaskDisplay";
-import TaskForm from "./features/task/TaskForm";
+import ModalTaskDisplay from "./features/task/TaskDisplay-Modal";
+import ModalTaskForm from "./features/task/TaskForm-Modal";
 import { AppDispatch } from "./app/store";
+
 
 const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const editedTask = useSelector(selectEditedTask);
-  const tasks = useSelector(selectTasks);
   const loginUser = useSelector(selectLoginUser);
   const profiles = useSelector(selectProfiles);
 
   const loginProfile = profiles.filter(
-    (prof) => prof.id === loginUser.id
+    (prof) => prof.user_profile === loginUser.id
   )[0];
-  
+
   const Logout = () => {
     localStorage.removeItem("localJWT");
     window.location.href = "/";
@@ -57,6 +56,14 @@ const App: React.FC = () => {
     };
     fetchLoader();
   }, [dispatch]);
+
+  // const [isOpen, setIsOpen] = useState(false);
+  // const handleOpen = () => {
+  //   setIsOpen(true);
+  // };
+  // const handleClose = () => {
+  //   setIsOpen(false);
+  // };
 
   return (
     <>
@@ -114,10 +121,8 @@ const App: React.FC = () => {
       </div>
       <div className={styles.main}>
         <TaskList />
-        <div>
-          <div>{editedTask.status ? <TaskForm /> : <TaskDisplay />}</div>
-        </div>
       </div>
+      <div>{editedTask.status ? <ModalTaskForm /> : <ModalTaskDisplay />}</div>
     </>
   );
 };

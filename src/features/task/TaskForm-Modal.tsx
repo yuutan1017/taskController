@@ -22,11 +22,11 @@ import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
 import styles from "./TaskForm.module.css";
 
-const TaskForm: React.FC = () => {
+const ModalTaskForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const category = useSelector(selectCategory);
   const editedTask = useSelector(selectEditedTask);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [inputText, setInputText] = useState("");
 
   const handleOpen = () => {
@@ -183,4 +183,4 @@ const TaskForm: React.FC = () => {
   );
 };
 
-export default TaskForm;
+export default ModalTaskForm;
