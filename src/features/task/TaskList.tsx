@@ -121,7 +121,7 @@ const TaskList: React.FC = () => {
                   <TableCell>
                     <div className={styles.edit_delete}>delete/edit</div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align="center">
                     <div className={styles.edit_delete}>detail</div>
                   </TableCell>
                 </TableRow>
@@ -178,6 +178,7 @@ const TaskList: React.FC = () => {
                     </TableCell>
                     <TableCell>
                       <button
+                        className={styles.detail}
                         onClick={() => {
                           openModal();
                           dispatch(selectTask(row));

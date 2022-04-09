@@ -17,10 +17,8 @@ import {
   selectEditedTask,
   selectCategory,
   editTask,
-  selectTask,
 } from "./taskSlice";
 import { AppDispatch } from "../../app/store";
-import { initialState } from "./taskSlice";
 import styles from "./Form.module.css";
 
 const ModalTaskForm: React.FC = () => {
@@ -71,118 +69,117 @@ const ModalTaskForm: React.FC = () => {
 
   return (
     <>
-      <div className={styles.card}>
-        <h2 className={styles.title}>
-          {editedTask.id ? "Update Task" : "New Task"}
-        </h2>
-        <form className={styles.form}>
-          <TextField
-            className={styles.grid_1}
-            label="Deadline"
-            type="date"
-            defaultValue={today}
-            name="deadline"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={editedTask.deadline}
-            onChange={handleInputChange}
-          />
-          <TextField
-            className={styles.grid_2}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            label="Task"
-            type="text"
-            name="task"
-            value={editedTask.task}
-            onChange={handleInputChange}
-          />
-          <TextField
-            className={styles.grid_1}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            label="Description"
-            type="text"
-            name="description"
-            value={editedTask.description}
-            onChange={handleInputChange}
-          />
-          <FormControl className={styles.grid_2}>
-            <InputLabel>Status</InputLabel>
-            <Select
-              name="status"
-              value={editedTask.status}
-              onChange={handleSelectStatusChange}
-            >
-              <MenuItem value={1}>Not started</MenuItem>
-              <MenuItem value={2}>On going</MenuItem>
-              <MenuItem value={3}>Done</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl className={styles.grid_3}>
-            <InputLabel>Category</InputLabel>
-            <Select
-              name="category"
-              value={editedTask.category}
-              onChange={handleSelectCatChange}
-            >
-              {catOptions}
-            </Select>
-          </FormControl>
-          <button type="button" onClick={handleOpen} className={styles.addIcon}>
-            +
-          </button>
-
-          <button
-            className={styles.save_btn}
-            disabled={isDisabled}
-            onClick={
-              editedTask.id !== 0
-                ? () => dispatch(fetchAsyncUpdateTask(editedTask))
-                : () => dispatch(fetchAsyncCreateTask(editedTask))
-            }
+      <h2 className={styles.title}>
+        {editedTask.id ? "Update Task" : "New Task"}
+      </h2>
+      <div className={styles.area}>
+        <TextField
+          className={styles.deadline}
+          label="Deadline"
+          type="date"
+          defaultValue={today}
+          name="deadline"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={editedTask.deadline}
+          onChange={handleInputChange}
+        />
+        <TextField
+          className={styles.task}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          label="Task"
+          type="text"
+          name="task"
+          value={editedTask.task}
+          onChange={handleInputChange}
+        />
+        <TextField
+          className={styles.description}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          label="Description"
+          type="text"
+          name="description"
+          value={editedTask.description}
+          onChange={handleInputChange}
+        />
+        <FormControl className={styles.status}>
+          <InputLabel>Status</InputLabel>
+          <Select
+            name="status"
+            value={editedTask.status}
+            onChange={handleSelectStatusChange}
           >
-            {editedTask.id !== 0 ? "Update" : "Save"}
-          </button>
-
-          <button
-            className={styles.cancel_btn}
-            onClick={() => {
-              dispatch(editTask(initialState.editedTask));
-              dispatch(selectTask(initialState.selectedTask));
-            }}
+            <MenuItem value={1}>Not started</MenuItem>
+            <MenuItem value={2}>On going</MenuItem>
+            <MenuItem value={3}>Done</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className={styles.category}>
+          <InputLabel>Category</InputLabel>
+          <Select
+            name="category"
+            value={editedTask.category}
+            onChange={handleSelectCatChange}
           >
-            Cancel
-          </button>
-
-          <Modal open={open} onClose={handleClose} className={styles.modal_bg}>
-            <div className={styles.modal}>
-              <TextField
-                className={styles.field}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                type="text"
-                value={inputText}
-                onChange={handleInputTextChange}
-              />
-              <button
-                type="button"
-                className={styles.add_button}
-                onClick={() => {
-                  dispatch(fetchAsyncCreateCategory(inputText));
-                  handleClose();
-                }}
-              >
-                SAVE
-              </button>
-            </div>
-          </Modal>
-        </form>
+            {catOptions}
+          </Select>
+        </FormControl>
+        <button type="button" onClick={handleOpen} className={styles.addIcon}>
+          +
+        </button>
       </div>
+      <div className={styles.save_btn_style}>
+        <button
+          className={styles.save_btn}
+          disabled={isDisabled}
+          onClick={
+            editedTask.id !== 0
+              ? () => dispatch(fetchAsyncUpdateTask(editedTask))
+              : () => dispatch(fetchAsyncCreateTask(editedTask))
+          }
+        >
+          {editedTask.id !== 0 ? "Update" : "Save"}
+        </button>
+      </div>
+
+      {/* <button
+          className={styles.cancel_btn}
+          onClick={() => {
+            dispatch(editTask(initialState.editedTask));
+            dispatch(selectTask(initialState.selectedTask));
+          }}
+        >
+          Cancel
+        </button> */}
+
+      <Modal open={open} onClose={handleClose} className={styles.modal_bg}>
+        <div className={styles.modal}>
+          <TextField
+            className={styles.field}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            type="text"
+            value={inputText}
+            onChange={handleInputTextChange}
+          />
+          <button
+            type="button"
+            className={styles.add_button}
+            onClick={() => {
+              dispatch(fetchAsyncCreateCategory(inputText));
+              handleClose();
+            }}
+          >
+            SAVE
+          </button>
+        </div>
+      </Modal>
     </>
   );
 };

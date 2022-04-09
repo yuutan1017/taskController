@@ -4,7 +4,6 @@ import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 
 import { selectSelectedTask } from "./taskSlice";
 import styles from "./Detail.module.css";
-import { Props } from "../types";
 
 const ModalTaskDisplay = () => {
   const selectedTask = useSelector(selectSelectedTask);

@@ -2,7 +2,7 @@
   margin: 0px 100px;
   display: grid;
   grid-template-columns: 33% 34% 33%;
-  grid-template-rows: 140px 50px;
+  grid-template-rows: 140px 10px;
 }
 .button_style {
   margin: auto;
@@ -57,7 +57,7 @@
 .main {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 30px auto;
   width: 60%;
   height: 100%;
 }

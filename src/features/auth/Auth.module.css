@@ -18,7 +18,7 @@
   flex-direction: column;
   height: 600px;
   width: 500px;
-  border-radius: 50px;
+  border-radius: 20px;
   background: #ebecf0;
   box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
   transition: box-shadow 0.4s ease-in-out;

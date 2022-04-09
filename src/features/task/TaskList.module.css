@@ -40,6 +40,22 @@
 .edit_delete {
   font-weight: bold;
 }
+.detail{
+  height: 30px;
+  width: 100px;
+  border: 0;
+  color: dimgray;
+  border-radius: 10px;
+  background: #ebecf0;
+  box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
+  font-size: 20px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.detail:hover {
+  background-color: #ebecf0;
+  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+  cursor: pointer;
+}
 
 .red {
   font-size: medium;

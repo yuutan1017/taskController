@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Avatar } from "@material-ui/core";
 import { ExitToApp } from "@material-ui/icons";
@@ -14,7 +14,6 @@ import {
   initialState,
   fetchAsyncGetTasks,
   fetchAsyncGetUsers,
-  selectEditedTask,
   selectTask,
   editTask,
   fetchAsyncGetCategory,

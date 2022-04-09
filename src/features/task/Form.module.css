@@ -1,44 +1,42 @@
 .card {
-  margin: auto;
-  margin-top: 8rem;
+  margin: 0px auto;
   padding: 20px 10px 0px;
-  border-radius: 30px;
-  width: 500px;
-  height: 450px;
-  box-shadow: 10px 10px 30px #c8c9cc, -10px -10px 30px #ffffff;
-  transition: box-shadow 0.2s ease-in-out;
+  border-radius: 20px;
+  width: 1200px;
+  height: 100px;
 }
 .card:hover {
   background-color: #ebecf0;
-  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
+
+}
+.area{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 300px;
 }
 .title {
   display: flex;
   justify-content: center;
-  color: #3f50b5;
-  font-size: 28px;
+  color: #0f27b1;
+  margin: 0px auto 10px;
 }
-.form {
-  justify-content: center;
-  display: grid;
-  grid-template-columns: 7% 8% 20% 5% 5% 20% 7% 8%;
-  grid-template-rows: 40% 40% 45%;
+.deadline {
+  width: 130px;
 }
-.grid_1 {
-  grid-column-start: 1;
-  grid-column-end: 4;
+.task {
+  width: 170px;
 }
-.grid_2 {
-  grid-column-start: 6;
-  grid-column-end: 9;
+.description{
+  width: 200px;
 }
-.grid_3 {
-  grid-column-start: 3;
-  grid-column-end: 7;
+.status{
+  width: 140px;
+}
+.category{
+  width: 140px;
 }
 
 .addIcon {
-  margin-left: 20px;
   margin-bottom: 20px;
   font-size: 30px;
   width: 40px;
@@ -56,6 +54,7 @@
   box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
   cursor: pointer;
 }
+
 .modal_bg {
   background-color: rgba(200, 200, 200, 0.2);
 }
@@ -93,31 +92,17 @@
   justify-content: center;
 }
 
-.cancel_btn {
-  grid-column-start: 6;
-  grid-column-end: 9;
-  height: 40px;
-  border: 0;
-  color: dimgray;
-  border-radius: 50px;
-  background: #ebecf0;
-  box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
-  font-size: 20px;
-  transition: box-shadow 0.2s ease-in-out;
-}
-.cancel_btn:hover {
-  background-color: #ebecf0;
-  box-shadow: -2px -2px 3px 1px #c8c9cc, 2px 2px 3px 1px #ffffff;
-  cursor: pointer;
+.save_btn_style{
+  display: flex;
+  justify-content: center;
 }
 
 .save_btn {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  height: 40px;
+  height: 35px;
+  width: 150px;
   border: 0;
   color: dimgray;
-  border-radius: 50px;
+  border-radius: 10px;
   background: #ebecf0;
   box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
   font-size: 20px;
