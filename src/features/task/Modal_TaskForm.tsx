@@ -147,16 +147,6 @@ const ModalTaskForm: React.FC = () => {
         </button>
       </div>
 
-      {/* <button
-          className={styles.cancel_btn}
-          onClick={() => {
-            dispatch(editTask(initialState.editedTask));
-            dispatch(selectTask(initialState.selectedTask));
-          }}
-        >
-          Cancel
-        </button> */}
-
       <Modal open={open} onClose={handleClose} className={styles.modal_bg}>
         <div className={styles.modal}>
           <TextField

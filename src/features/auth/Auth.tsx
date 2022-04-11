@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./Auth.module.css";
-
 import { useSelector, useDispatch } from "react-redux";
+
+import styles from "./Auth.module.css";
 import { AppDispatch } from "../../app/store";
 import {
   toggleMode,
@@ -10,6 +10,7 @@ import {
   fetchAsyncCreateProf,
   selectLoginView,
 } from "./authSlice";
+
 
 const Auth: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -32,13 +33,15 @@ const Auth: React.FC = () => {
       }
     }
   };
+
   return (
     <div className={styles.back}>
-      <div className={styles.card}>
+      <form className={styles.card}>
         <h1 className={styles.login_tx}>
           {isLoginView ? "Login" : "Register"}
         </h1>
         <input
+          id="username"
           placeholder="username"
           className={styles.input_name}
           type="text"
@@ -48,6 +51,7 @@ const Auth: React.FC = () => {
         />
         <br />
         <input
+          id="password"
           placeholder="password"
           className={styles.input_pass}
           type="password"
@@ -61,7 +65,7 @@ const Auth: React.FC = () => {
         <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>
           {isLoginView ? "Create new account ?" : "Back to Login"}
         </span>
-      </div>
+      </form>
     </div>
   );
 };

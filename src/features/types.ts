@@ -1,5 +1,6 @@
 
 // authSlice.ts
+
 export interface LOGIN_USER {
   id: number;
   username: string;
