@@ -7,7 +7,6 @@ import {
   Select,
   Modal,
 } from "@material-ui/core";
-import dayjs from "dayjs";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -21,7 +20,7 @@ import {
 import { AppDispatch } from "../../app/store";
 import styles from "./Form.module.css";
 
-const ModalTaskForm: React.FC = () => {
+export const TaskForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const category = useSelector(selectCategory);
   const editedTask = useSelector(selectEditedTask);
@@ -65,8 +64,6 @@ const ModalTaskForm: React.FC = () => {
     </MenuItem>
   ));
 
-  const today = dayjs().format("YYYY-MM-DD");
-
   return (
     <>
       <h2 className={styles.title}>
@@ -77,7 +74,6 @@ const ModalTaskForm: React.FC = () => {
           className={styles.deadline}
           label="Deadline"
           type="date"
-          defaultValue={today}
           name="deadline"
           InputLabelProps={{
             shrink: true,
@@ -174,4 +170,3 @@ const ModalTaskForm: React.FC = () => {
   );
 };
 
-export default ModalTaskForm;

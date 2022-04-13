@@ -36,7 +36,7 @@ const Auth: React.FC = () => {
 
   return (
     <div className={styles.back}>
-      <form className={styles.card}>
+      <div className={styles.card}>
         <h1 className={styles.login_tx}>
           {isLoginView ? "Login" : "Register"}
         </h1>
@@ -65,7 +65,7 @@ const Auth: React.FC = () => {
         <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>
           {isLoginView ? "Create new account ?" : "Back to Login"}
         </span>
-      </form>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 import { selectSelectedTask } from "./taskSlice";
 import styles from "./Detail.module.css";
 
-const ModalTaskDisplay = () => {
+export const TaskDetail = () => {
   const selectedTask = useSelector(selectSelectedTask);
   const rows = [
     { item: "タスク", data: selectedTask.task },
@@ -43,4 +43,3 @@ const ModalTaskDisplay = () => {
   );
 };
 
-export default ModalTaskDisplay;

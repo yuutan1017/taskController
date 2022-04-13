@@ -25,7 +25,7 @@ import { selectLoginUser, selectProfiles } from "../auth/authSlice";
 import { AppDispatch } from "../../app/store";
 import { initialState } from "./taskSlice";
 import { SORT_STATE, READ_TASK } from "../types";
-import ModalTaskDisplay from "./Modal_TaskDetail";
+import { TaskDetail } from "./Detail";
 
 const TaskList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -196,7 +196,7 @@ const TaskList: React.FC = () => {
       </div>
       <Modal open={showModal} onClose={openModal} className={styles.bg}>
         <div className={styles.overlay}>
-          <ModalTaskDisplay />
+          <TaskDetail />
         </div>
       </Modal>
     </>

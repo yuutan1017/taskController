@@ -21,7 +21,7 @@ import {
 import styles from "./App.module.css";
 
 import TaskList from "./features/task/TaskList";
-import ModalTaskForm from "./features/task/Modal_TaskForm";
+import { TaskForm } from "./features/task/Form";
 import { AppDispatch } from "./app/store";
 
 const App: React.FC = () => {
@@ -32,6 +32,7 @@ const App: React.FC = () => {
   const loginProfile = profiles.filter(
     (prof) => prof.user_profile === loginUser.id
   )[0];
+  console.log(loginProfile);
 
   const Logout = () => {
     localStorage.removeItem("localJWT");
@@ -108,7 +109,7 @@ const App: React.FC = () => {
         </div>
       </div>
       <div className={styles.new}>
-        <ModalTaskForm />
+        <TaskForm />
       </div>
       <div className={styles.main}>
         <TaskList />
