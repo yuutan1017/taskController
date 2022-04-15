@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Auth.module.css";
 import { AppDispatch } from "../../app/store";
 import {
-  toggleMode,
+  toggle,
   fetchAsyncLogin,
   fetchAsyncRegister,
   fetchAsyncCreateProf,
@@ -62,7 +62,7 @@ const Auth: React.FC = () => {
         <button className={styles.button} type="button" onClick={login}>
           {isLoginView ? "Login" : "Register"}
         </button>
-        <span className={styles.span_tx} onClick={() => dispatch(toggleMode())}>
+        <span className={styles.span_tx} onClick={() => dispatch(toggle())}>
           {isLoginView ? "Create new account ?" : "Back to Login"}
         </span>
       </div>

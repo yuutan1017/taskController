@@ -13,7 +13,7 @@ export const TaskDetail = () => {
     { item: "責任者", data: selectedTask.owner_username },
     { item: "期限日", data: selectedTask.deadline },
     { item: "カテゴリー", data: selectedTask.category_item },
-    { item: "現状", data: selectedTask.status_name },
+    { item: "状態", data: selectedTask.status_name },
     { item: "作成日", data: selectedTask.created_at },
     { item: "更新日", data: selectedTask.update_at },
   ];

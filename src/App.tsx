@@ -66,8 +66,8 @@ const App: React.FC = () => {
                   id: 0,
                   task: "",
                   description: "",
-                  status: "1",
-                  category: 1,
+                  status: "",
+                  category: 0,
                   deadline: "",
                   owner: loginUser.id,
                 })

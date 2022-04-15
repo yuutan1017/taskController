@@ -122,7 +122,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    toggleMode(state) {
+    toggle(state): void {
       state.loginView = !state.loginView;
     },
   },
@@ -166,7 +166,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { toggleMode } = authSlice.actions;
+export const { toggle } = authSlice.actions;
 
 export const selectLoginView = (state: RootState) => state.auth.loginView;
 export const selectLoginUser = (state: RootState) => state.auth.loginUser;

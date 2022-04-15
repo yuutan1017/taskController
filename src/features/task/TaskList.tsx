@@ -43,10 +43,10 @@ const TaskList: React.FC = () => {
   const handleClickSortColumn = (column: keyof READ_TASK) => {
     const isDesc = column === state.activeKey && state.order === "desc";
     const newOrder = isDesc ? "asc" : "desc";
-    const sortedRows = Array.from(state.rows).sort((a, b) => {
-      if (a[column] > b[column]) {
+    const sortedRows = Array.from(state.rows).sort((x, y) => {
+      if (x[column] > y[column]) {
         return newOrder === "asc" ? 1 : -1;
-      } else if (a[column] < b[column]) {
+      } else if (x[column] < y[column]) {
         return newOrder === "asc" ? -1 : 1;
       } else {
         return 0;
@@ -143,11 +143,7 @@ const TaskList: React.FC = () => {
                               dispatch(editTask(initialState.editedTask));
                             }}
                           >
-                            {key === "status_name" ? (
-                              renderSwitch(row[key])
-                            ) : (
-                              <span>{row[key]}</span>
-                            )}
+                            {key === "status_name" ? renderSwitch(row[key]) : <span>{row[key]}</span>}
                           </TableCell>
                         )
                     )}
@@ -164,14 +160,14 @@ const TaskList: React.FC = () => {
                         onClick={() => {
                           dispatch(fetchAsyncDeleteTask(row.id));
                         }}
-                        disabled={row["owner"] !== loginUser.id}
+                        disabled={row["owner_username"] !== loginUser.username}
                       >
                         <DeleteOutlineOutlinedIcon />
                       </button>
                       <button
                         className={styles.list_icon}
                         onClick={() => dispatch(editTask(row))}
-                        disabled={row["owner"] !== loginUser.id}
+                        disabled={row["owner_username"] !== loginUser.username}
                       >
                         <EditOutlinedIcon />
                       </button>
