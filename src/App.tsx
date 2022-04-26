@@ -32,7 +32,6 @@ const App: React.FC = () => {
   const loginProfile = profiles.filter(
     (prof) => prof.user_profile === loginUser.id
   )[0];
-  console.log(loginProfile);
 
   const Logout = () => {
     localStorage.removeItem("localJWT");
@@ -103,7 +102,7 @@ const App: React.FC = () => {
           <button className={styles.avatar} onClick={handlerEditPicture}>
             <Avatar
               alt="avatar"
-              src={loginProfile?.img !== null ? loginProfile?.img : undefined}
+              src={loginProfile?.img === null ? undefined : loginProfile?.img}
             />
           </button>
         </div>
