@@ -69,11 +69,11 @@ const TaskList: React.FC = () => {
 
   const renderSwitch = (statusName: string) => {
     switch (statusName) {
-      case "Not started":
+      case "Before it started":
         return <div className={styles.red}>{statusName}</div>;
-      case "On going":
+      case "Start now":
         return <div className={styles.blue}>{statusName}</div>;
-      case "Done":
+      case "Finished":
         return <div className={styles.green}>{statusName}</div>;
       default:
         return null;
@@ -143,7 +143,11 @@ const TaskList: React.FC = () => {
                               dispatch(editTask(initialState.editedTask));
                             }}
                           >
-                            {key === "status_name" ? renderSwitch(row[key]) : <span>{row[key]}</span>}
+                            {key === "status_name" ? (
+                              renderSwitch(row[key])
+                            ) : (
+                              <span>{row[key]}</span>
+                            )}
                           </TableCell>
                         )
                     )}

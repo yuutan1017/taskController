@@ -110,9 +110,9 @@ export const TaskForm: React.FC = () => {
             value={editedTask.status}
             onChange={handleSelectStatusChange}
           >
-            <MenuItem value={1}>Not started</MenuItem>
-            <MenuItem value={2}>On going</MenuItem>
-            <MenuItem value={3}>Done</MenuItem>
+            <MenuItem value={1}>Before it started</MenuItem>
+            <MenuItem value={2}>Start now</MenuItem>
+            <MenuItem value={3}>Finished</MenuItem>
           </Select>
         </FormControl>
         <FormControl className={styles.category}>
