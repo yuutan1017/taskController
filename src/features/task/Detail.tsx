@@ -15,7 +15,7 @@ export const TaskDetail = () => {
     { item: "カテゴリー", data: selectedTask.category_item },
     { item: "状態", data: selectedTask.status_name },
     { item: "作成日", data: selectedTask.created_at },
-    { item: "更新日", data: selectedTask.update_at },
+    { item: "更新日", data: selectedTask.updated_at },
   ];
 
   if (!selectedTask.task) {

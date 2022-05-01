@@ -63,7 +63,7 @@ const Auth: React.FC = () => {
           {isLoginView ? "Login" : "Register"}
         </button>
         <span className={styles.span_tx} onClick={() => dispatch(toggle())}>
-          {isLoginView ? "Create new account ?" : "Back to Login"}
+          {isLoginView ? "Create account" : "Back to Login"}
         </span>
       </div>
     </div>

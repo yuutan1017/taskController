@@ -69,9 +69,9 @@ const TaskList: React.FC = () => {
 
   const renderSwitch = (statusName: string) => {
     switch (statusName) {
-      case "Before it started":
+      case "Before started":
         return <div className={styles.red}>{statusName}</div>;
-      case "Start now":
+      case "On going":
         return <div className={styles.blue}>{statusName}</div>;
       case "Finished":
         return <div className={styles.green}>{statusName}</div>;
